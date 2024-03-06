@@ -142,7 +142,7 @@ class SessionInterceptor : Interceptor() {
 	//Here, you can define some universal behaviors for error handling
 	//For example:
 	//You can retry the request if it fails because of expired authorization data
-	if (error.code == 403) {
+	if (error.code == 401) {
 		val headers = retryableCancellableMutableRequest.request.headers
 		headers["Authorization"] = getNewAuthorization()
         	retryableCancellableMutableRequest.request.headers
@@ -250,17 +250,15 @@ MockServerMaker.Builder()
 ----
 val handler = object : WebServerHandler() {
     override suspend fun handleRequest(call: HttpCall) {
-        when (method) {
-            get {
-                val delayLength = call.getCallArguments()["length"]!!
+        get {
+        	val delayLength = call.getCallArguments()["length"]!!
+        	delay(delayLength.toLong() * 1000L)
+        	call.respond(200, "{\"delay\":\"$delayLength\"}")
+        }
+        post {
+        	val delayLength = call.getCallArguments()["length"]!!
                 delay(delayLength.toLong() * 1000L)
                 call.respond(200, "{\"delay\":\"$delayLength\"}")
-            }
-            post {
-                val delayLength = call.getCallArguments()["length"]!!
-                delay(delayLength.toLong() * 1000L)
-                call.respond(200, "{\"delay\":\"$delayLength\"}")
-            }
         }
     }
 }
