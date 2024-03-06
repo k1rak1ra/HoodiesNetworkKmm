@@ -1,0 +1,309 @@
+= Hoodies-NetworkKmm
+:toc:
+:source-highlighter: highlightjs
+
+== Introduction
+
+Hoodies-Network is a modern, type-safe, high-performance, and feature-rich KMM HTTP library.
+It is a feature-complete KMM rewrite of the original Hoodies-Network library, available at https://github.com/gapinc/hoodies-network
+
+== Features
+
+* An advanced request, response, and error interceptor system
+* An advanced MockWebServer with a friendly expect-return DSL
+* A configurable and optionally-encrypted cache system for all requests
+* Built-in cookie handling
+* Automatic retry on failure
+* Custom header support
+* Support for POST, GET, PATCH, PUT, and DELETE methods
+* Support for URL query parameters on POST, GET, and PATCH requests, encoded automatically
+* Built from the ground up on Coroutines and suspend
+* Smart type-safe request body and response conversion using Kotlin Serialization
+* Built-in support for fetching a Compose ImageBitmap from a URL
+
+
+== Usage Guide
+
+=== Getting Started
+
+. Integrate this library as a dependency in your project:
+.. Clone the project and publish it to your local Maven repository:
+... (In Android Studio top menu) Build -> Clean Build
+... *Build* -> *Make Module 'HoodiesNetworkKmm.hoodiesnetwork_kmm'*
+... *Gradle* -> *Tasks* -> *publishing* -> *publishToMavenLocal*
+.. Use Gradle to add it as a dependency in your project:
+... `implementation "net.k1ra.hoodies_network_kmm:hoodies_network_kmm:latest"`
+. Build your HttpClient (All parameters are optional):
+
+[source,kotlin]
+----
+val customDefaultHeaders = hashMapOf(
+        "Authorization" to "Bearer ...magictoken..."
+    )
+
+val client = HoodiesNetworkClient.Builder().apply {
+        baseUrl = "https://example.com/"
+        maxRetryLimit = 3
+        defaultHeaders = customDefaultHeaders
+        retryOnConnectionFailure = true
+        interceptors = listOf(yourFirstInterceptorHere, thisOneIsCalledAfterTheFirstOne)
+        config = HttpClientConfig(connectTimeout = 1.seconds, readTimeout = 1.seconds)
+        cacheConfiguration = CacheEnabled(encryptionEnabled = true, staleDataThreshold = 30.seconds)
+        cookieJar = CookieJar()
+    }.build()
+----
+
+=== Making HTTP Requests
+
+In general, a request can be made by calling `client.method` where possible methods are: `post`, `get`, `patch`, `put`, and `delete`
+
+For example, a simple GET request with no body would be `val result = client.get<String>("endpoint")`
+The *type argument*, in this case `String`, is the type of data you're fetching. Possible options are:
+
+* Unit
+* ByteArray
+* String
+* ImageBitmap
+* Any `@Serializable` type
+
+`get`, `post`, and `patch` methods support sending encoded URL query parameters, note the *single type argument*:
+[source,kotlin]
+----
+val params = mapOf("param1" to "test1", "param2" to "test2")
+
+val resultGet = client.get<String>("endpointGet", params)
+val resultPost = client.post<String>("endpointPost", params)
+val resultPatch = client.patch<String>("endpointPatch", params)
+----
+You can send a request with an empty body and no URL query parameters by simply not including the params argument in the above example
+
+`post`, `patch`, `put`, and `delete` methods support sending the following data as the request body:
+
+* Unit/null
+* ByteArray
+* String
+* Any `@Serializable` type
+
+In these calls the *first type argument is the result type* and the *second type argument is your body data type*:
+[source,kotlin]
+----
+val body = ExampleRequestBody(123, "test")
+
+val resultPost = client.post<ExampleResponse, ExampleRequestBody>("endpointPost", body)
+val resultPatch = client.patch<ExampleResponse, ExampleRequestBody>("endpointPatch", body)
+val resultPut = client.put<ExampleResponse, ExampleRequestBody>("endpointPut", body)
+val resultDelete = client.delete<ExampleResponse, ExampleRequestBody>("endpointDelete", body)
+----
+
+All request and body types also support the following additional optional parameters:
+
+* `extraHeaders: Map<String, String>? = null`
+* `customCache: CacheConfiguration? = null`
+
+A request will return either a `Success` or `Failure` object. Therefore, the typical pattern for making a request and processing the result is as follows:
+[source,kotlin]
+----
+when (val result = client.post<HttpBinResponse, ExampleRequestBody>("post", body)) {
+    is Success -> {
+        println("Request NetworkTime: ${result.rawResponse?.networkTimeMs}") //result.rawResponse contains properties that are useful for benchmarking and debugging
+        _resultFlow.value = result.value //result.value is our HttpBinResponse
+    }
+    is Failure -> _errorFlow.value = result.reason //An Exception that contains the error code and a message
+}
+----
+
+
+=== Using Interceptors
+
+Optionally, you can create an `Interceptor` Class which inherits from `net.k1ra.hoodies_network_kmm.interceptor.Interceptor`.
+`Interceptors` allow you read/modify all properties (headers, body, etc.) of requests and responses before they are executed/delivered.
+
+`CancellableMutableRequests` can be cancelled by calling `cancellableMutableRequest.cancelRequest(Success(object to return))` or `cancellableMutableRequest.cancelRequest(Failure(HttpClientError(message, code)))` - based on your use case.
+
+`RetryableCancellableMutableRequests` can be cancelled as well as retried.
+If the request has its body or headers changed, the retry attempt will execute the request with the changes intact.
+
+[source,kotlin]
+----
+class SessionInterceptor : Interceptor() {
+
+    override fun interceptRequest(identifier: String, cancellableMutableRequest: CancellableMutableRequest) {
+        //Called before the request is made
+	    //Here, you can define some universal behaviors for all network requests
+	    //For example:
+	    //Append an Authorization header
+	    val headers = cancellableMutableRequest.request.headers
+	    headers["Authorization"] = "Something"
+        cancellableMutableRequest.request.headers = headers
+    }
+
+    override fun interceptError(error: HttpClientError, retryableCancellableMutableRequest: RetryableCancellableMutableRequest, autoRetryAttempts: Int) {
+        //This is invoked before the failure callback is called
+	    //Here, you can define some universal behaviors for error handling
+	    //For example:
+	    //You can retry the request if it fails because of expired authorization data
+	    if (error.code == 403) {
+		    val headers = retryableCancellableMutableRequest.request.headers
+		    headers["Authorization"] = getNewAuthorization()
+        	retryableCancellableMutableRequest.request.headers
+
+	  	    retryableCancellableMutableRequest.retryRequest()
+	    }
+    }
+
+    override fun interceptResponse(result: Result<*>) {
+        //This is invoked upon the successful completion of a request
+	    //Here, you can define some universal behaviors for all responses
+    }
+}
+----
+
+=== Using Automatic Retry
+
+If a request fails due to a `SocketTimeoutException` or `IOException`, Hoodies-Network can automatically retry the request a specific number of times.
+
+Retry is configured in the `HoodiesNetworkClient.Builder()` by setting  `retryOnConnectionFailure = true`.
+
+The number of retries can be configured by setting `maxRetryLimit = 3` and a delay between retry attempts can be set using `retryDelayDuration = Duration`.
+
+
+=== Handling Cookies
+
+By default, all cookies are ignored.
+Cookie retention and manipulation can be performed as follows:
+
+. Pass a `CookieJar` to `cookieJar` parameter of the `HoodiesNetworkClient.Builder()`:
+. Manipulate the contents of the `CookieJar` using the following methods:
+.. `add(cookie: HttpCookie)` adds a cookie to the `CookieJar`, it will be sent for all requests from this `HoodiesNetworkClient`
+.. `get(): MutableList<HttpCookie>` gets all the cookies stored in the `CookieJar`
+.. `remove(name: String): Boolean` removes the cookie named `name` from the `CookieJar`
+.. `removeAll()` deletes all cookies in the `CookieJar`
+
+=== Using the Cache
+
+By default, no data is cached.
+Caching can be configured and enabled as follows:
+
+. Create a `CacheEnabled` object
+.. If the data in the cache needs to be encrypted, set `encryptionEnabled = true`
+.. Decide what the stale data threshold should be and set it: `staleDataThreshold = 60.seconds`
+.. Instantiate the object: `val cacheConfiguration = CacheEnabled(encryptionEnabled = true, staleDataThreshold = 60.seconds)`
+. Pass the `CacheEnabled` object to the `cacheConfiguration` parameter of the `HoodiesNetworkClient.Builder()`, or to `customCache` when making a network request as shown:
+
+[source,kotlin]
+----
+client.post<HttpBinResponse, String>(
+    "post",
+    "My request body string",
+    customCache = CacheEnabled(staleDataThreshold = 1.seconds, encryptionEnabled = true)
+)
+----
+
+. Even if you have already configured your cache settings in `HoodiesNetworkClient.Builder()`, you can pass a different cache configuration to your request in order to change the stale data threshold, encryption setting, etc
+
+
+=== Using the MockWebServer
+
+The MockWebServer can replicate your API endpoints for unit testing purposes.
+
+. Create a `MockWebServerManager.Builder()` and set the port: `val serverBuilder = MockWebServerManager.Builder().usePort(5000)`
+. Mock your API endpoints (For simple use-cases) Using the MockServerMaker DSL:
++
+[source,kotlin]
+----
+@Serializable
+data class Person(
+    val name: String,
+    val salary: Int,
+    val age: Int
+)
+
+@Serializable
+data class Response(
+    val status: String
+)
+
+//Make request body
+val steve = Person("Steve", 1234, 32)
+
+//Make request headers
+val reqHeaders: MutableMap<String, String> = HashMap()
+reqHeaders["key"] = "value"
+
+//Mock response
+val response = Response("Person added")
+
+//Set up MockWebServer builder with port
+val serverBuilder = MockWebServerManager.Builder().usePort(5000)
+
+//Set up handler on MockWebServer to accept the request body and headers from above
+MockServerMaker.Builder()
+    .acceptMethod("POST")
+    .expect(steve) //Can also be a HashMap<String, String> to validate URL-encoded params
+    .expectHeaders(reqHeaders)
+    .returnThisObjectIfInputMatches(response)
+    .applyToMockWebServerBuilder("/test", serverBuilder)
+----
+.(For advanced behavior) By making a `WebServerHandler()` for your endpoint:
++
+[source,kotlin]
+----
+val handler = object : WebServerHandler() {
+    override suspend fun handleRequest(call: HttpCall) {
+        when (method) {
+            get {
+                val delayLength = call.getCallArguments()["length"]!!
+                delay(delayLength.toLong() * 1000L)
+                call.respond(200, "{\"delay\":\"$delayLength\"}")
+            }
+            post {
+                val delayLength = call.getCallArguments()["length"]!!
+                delay(delayLength.toLong() * 1000L)
+                call.respond(200, "{\"delay\":\"$delayLength\"}")
+            }
+        }
+    }
+}
+
+serverBuilder.addContext("/echo/{length}", handler)
+----
+. Start the MockWebServer: `val server = serverBuilder.start()`
+. Run your tests
+. Stop the MockWebServer: `server.stop()`
+
+== Running Tests
+
+The test classes are all in commonTest, but `HttpClientConfig.testMode = true` is set to mock SQL and encryption key storage on Android due to a dependency on Context
+
+
+The MockWebServer is used to host the endpoints for the tests.
+The test classes are as follows:
+
+* BodyConvertorTests
+* CookieTests
+* EncryptedCacheTests
+* InterceptorTests
+* MockServerMakerTests
+* RegularRequestTests
+* RetryTests
+* UrlQueryParamTests
+
+
+== Environment Setup
+
+* Since this is a KMM project, a modern version of Android Studio (2023.1.1 is required)
+* Remember to configure Android Studio to use Java 17
+
+== Conduct
+
+This is a professional environment, and you are expected to conduct yourself in a professional and courteous manner.
+If you fail to exhibit appropriate conduct, your contributions and interactions will no longer be welcome here.
+
+== Contributing
+
+* Everyone is welcome and encouraged to contribute.
+If you are looking for a place to start, try working on an unassigned issue with the `good-first-issue` tag.
+* All contributions are expected to conform to standard Kotlin code style and be covered by unit tests.
+* PRs will not be merged if there are failing tests.
+* If you would like to contribute code you can do so through GitHub by forking the repository and sending a pull request.
+* When submitting code, please follow the existing conventions and style in order to keep the code readable.

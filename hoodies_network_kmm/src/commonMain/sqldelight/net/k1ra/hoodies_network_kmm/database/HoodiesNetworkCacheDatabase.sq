@@ -1,0 +1,20 @@
+CREATE TABLE HoodiesNetworkCache  (
+    id INTEGER NOT NULL PRIMARY KEY,
+    url TEXT NOT NULL,
+    bodyHash INTEGER NOT NULL,
+    cachedAt INTEGER NOT NULL,
+    data BLOB NOT NULL,
+    iv BLOB
+);
+
+insert:
+INSERT INTO HoodiesNetworkCache(url, bodyHash, cachedAt, data, iv) VALUES (?,?,?,?,?);
+
+getByIv:
+SELECT count(*) FROM HoodiesNetworkCache WHERE (iv = ?);
+
+get:
+SELECT * FROM HoodiesNetworkCache WHERE (url = ? AND bodyHash = ?);
+
+delete:
+DELETE FROM HoodiesNetworkCache WHERE (url = ? AND bodyHash = ?);
