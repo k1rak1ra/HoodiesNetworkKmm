@@ -129,31 +129,31 @@ class SessionInterceptor : Interceptor() {
 
     override fun interceptRequest(identifier: String, cancellableMutableRequest: CancellableMutableRequest) {
         //Called before the request is made
-	    //Here, you can define some universal behaviors for all network requests
-	    //For example:
-	    //Append an Authorization header
-	    val headers = cancellableMutableRequest.request.headers
-	    headers["Authorization"] = "Something"
+	//Here, you can define some universal behaviors for all network requests
+	//For example:
+	//Append an Authorization header
+	val headers = cancellableMutableRequest.request.headers
+	headers["Authorization"] = "Something"
         cancellableMutableRequest.request.headers = headers
     }
 
     override fun interceptError(error: HttpClientError, retryableCancellableMutableRequest: RetryableCancellableMutableRequest, autoRetryAttempts: Int) {
         //This is invoked before the failure callback is called
-	    //Here, you can define some universal behaviors for error handling
-	    //For example:
-	    //You can retry the request if it fails because of expired authorization data
-	    if (error.code == 403) {
-		    val headers = retryableCancellableMutableRequest.request.headers
-		    headers["Authorization"] = getNewAuthorization()
+	//Here, you can define some universal behaviors for error handling
+	//For example:
+	//You can retry the request if it fails because of expired authorization data
+	if (error.code == 403) {
+		val headers = retryableCancellableMutableRequest.request.headers
+		headers["Authorization"] = getNewAuthorization()
         	retryableCancellableMutableRequest.request.headers
 
-	  	    retryableCancellableMutableRequest.retryRequest()
-	    }
+	  	retryableCancellableMutableRequest.retryRequest()
+	}
     }
 
     override fun interceptResponse(result: Result<*>) {
         //This is invoked upon the successful completion of a request
-	    //Here, you can define some universal behaviors for all responses
+	//Here, you can define some universal behaviors for all responses
     }
 }
 ----
@@ -291,7 +291,7 @@ The test classes are as follows:
 
 == Environment Setup
 
-* Since this is a KMM project, a modern version of Android Studio (2023.1.1 is required)
+* Since this is a KMM project, a modern version of Android Studio (2023.1.1 or newer) is required
 * Remember to configure Android Studio to use Java 17
 
 == Conduct
