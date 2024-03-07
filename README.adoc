@@ -31,6 +31,8 @@ It is a feature-complete KMM rewrite of the original Hoodies-Network library, av
 ... `maven("https://k1ra.net/nexus/repository/public")`
 .. Add the dependency:
 ... `implementation("net.k1ra.hoodies_network_kmm:HoodiesNetworkKmm:latest.release")`
+.. Add the following linker flag to `Other Linker Flags` in your Xcode project:
+... `-lsqlite3`
 . Build your HttpClient (All parameters are optional):
 
 [source,kotlin]
