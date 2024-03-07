@@ -1,4 +1,4 @@
-package net.k1ra.hoodies_network_kmm
+package net.k1ra.hoodies_network_kmm_demo_app
 
 import App
 import android.os.Bundle
