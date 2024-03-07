@@ -27,12 +27,10 @@ It is a feature-complete KMM rewrite of the original Hoodies-Network library, av
 === Getting Started
 
 . Integrate this library as a dependency in your project:
-.. Clone the project and publish it to your local Maven repository:
-... (In Android Studio top menu) Build -> Clean Build
-... *Build* -> *Make Module 'HoodiesNetworkKmm.hoodiesnetwork_kmm'*
-... *Gradle* -> *Tasks* -> *publishing* -> *publishToMavenLocal*
-.. Use Gradle to add it as a dependency in your project:
-... `implementation "net.k1ra.hoodies_network_kmm:hoodies_network_kmm:latest"`
+.. Add the Maven repository to your `settings.gradle`
+... `maven("https://k1ra.net/nexus/repository/public")`
+.. Add the dependency:
+... `implementation("net.k1ra.hoodies_network_kmm:HoodiesNetworkKmm:latest.release")`
 . Build your HttpClient (All parameters are optional):
 
 [source,kotlin]
@@ -291,6 +289,9 @@ The test classes are as follows:
 
 * Since this is a KMM project, a modern version of Android Studio (2023.1.1 or newer) is required
 * Remember to configure Android Studio to use Java 17
+
+== Dokka
+https://k1rak1ra.github.io/HoodiesNetworkKmm/index.html
 
 == Conduct
 
