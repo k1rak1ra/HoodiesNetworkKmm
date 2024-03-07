@@ -5,13 +5,12 @@ android-minSdk = "24"
 android-targetSdk = "34"
 androidx-activityCompose = "1.8.2"
 compose = "1.6.3"
-compose-plugin = "1.5.12"
+compose-plugin = "1.6.0"
 kotlin = "1.9.22"
 sqlDelight = "2.0.1"
 kotlin-serialization = "1.6.2"
 kotlin-coroutines = "1.6.3-native-mt"
 kotlin-datetime = "0.5.0"
-kmmbridge = "0.5.2"
 androidx-crypto = "1.0.0"
 korlibs = "5.3.2"
 uuid = "0.8.2"
@@ -43,7 +42,6 @@ jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
-kmmBridge = { id = "co.touchlab.kmmbridge", version.ref = "kmmbridge" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 

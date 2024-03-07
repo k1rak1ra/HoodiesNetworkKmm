@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.androidLibrary) apply false
     alias(libs.plugins.jetbrainsCompose) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
-    alias(libs.plugins.kmmBridge) apply false
     alias(libs.plugins.kover) apply false
     alias(libs.plugins.dokka) apply false
 }
