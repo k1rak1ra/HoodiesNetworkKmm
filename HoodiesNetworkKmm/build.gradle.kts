@@ -14,7 +14,7 @@ plugins {
 }
 
 group = "net.k1ra.hoodies_network_kmm"
-version = System.getenv("github.event.release.name") ?: "999999.999999.999999"
+version = System.getenv("releaseName") ?: "999999.999999.999999"
 
 sqldelight {
     databases {
@@ -114,8 +114,8 @@ publishing {
             url = uri("https://k1ra.net/nexus/repository/public/")
 
             credentials(PasswordCredentials::class) {
-                username = System.getenv("secrets.NEXUS_USERNAME") ?: "anonymous"
-                password = System.getenv("secrets.NEXUS_PASSWORD") ?: ""
+                username = System.getenv("NEXUS_USERNAME") ?: "anonymous"
+                password = System.getenv("NEXUS_PASSWORD") ?: ""
             }
         }
     }

@@ -12,6 +12,15 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Set env release name
+        run: export releaseName=${{ github.event.release.name }}
+
+      - name: Set env nexus username
+        run: export NEXUS_USERNAME=${{ secrets.NEXUS_USERNAME }}
+
+      - name: Set env nexus password
+        run: export NEXUS_PASSWORD=${{ secrets.NEXUS_PASSWORD }}
+
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
