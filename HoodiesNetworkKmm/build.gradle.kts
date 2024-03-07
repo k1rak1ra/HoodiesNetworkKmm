@@ -1,7 +1,6 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -11,10 +10,11 @@ plugins {
     id("maven-publish")
     alias(libs.plugins.sqlDelight)
     alias(libs.plugins.kover)
+    alias(libs.plugins.dokka)
 }
 
 group = "net.k1ra.hoodies_network_kmm"
-version = "1.0.0"
+version = System.getenv("github.event.release.name") ?: "999999.999999.999999"
 
 sqldelight {
     databases {
@@ -109,6 +109,22 @@ android {
 
 publishing {
     repositories {
-        mavenLocal()
+        maven {
+            name = "k1ra-nexus"
+            url = uri("https://k1ra.net/nexus/repository/public/")
+
+            credentials(PasswordCredentials::class) {
+                username = System.getenv("secrets.NEXUS_USERNAME") ?: "anonymous"
+                password = System.getenv("secrets.NEXUS_PASSWORD") ?: ""
+            }
+        }
+    }
+}
+
+tasks{
+    register<Jar>("dokkaJar") {
+        from(dokkaHtml)
+        dependsOn(dokkaHtml)
+        archiveClassifier.set("javadoc")
     }
 }
