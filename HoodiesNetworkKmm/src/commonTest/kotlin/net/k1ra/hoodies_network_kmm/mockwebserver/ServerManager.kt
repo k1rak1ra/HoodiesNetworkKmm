@@ -3,7 +3,6 @@ package net.k1ra.hoodies_network_kmm.mockwebserver
 import net.k1ra.hoodies_network_kmm.mockwebserver.endpoints.CookieFactory
 import net.k1ra.hoodies_network_kmm.mockwebserver.endpoints.CookieInspector
 import net.k1ra.hoodies_network_kmm.mockwebserver.endpoints.EchoDelay
-import net.k1ra.hoodies_network_kmm.mockwebserver.endpoints.Image
 import net.k1ra.hoodies_network_kmm.mockwebserver.endpoints.WantsKeyHeader
 import net.k1ra.hoodies_network_kmm.mockwebserver.endpoints.httpbin.Delete
 import net.k1ra.hoodies_network_kmm.mockwebserver.endpoints.httpbin.Get
@@ -27,7 +26,6 @@ object ServerManager {
         builder.addContext("/put", Put())
         builder.addContext("/delete", Delete())
         builder.addContext("/patch", Patch())
-        builder.addContext("/image", Image())
 
         //Postman echo replica
         builder.addContext("/echo/{length}", EchoDelay())
