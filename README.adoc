@@ -6,6 +6,7 @@
 
 Hoodies-Network is a modern, type-safe, high-performance, and feature-rich KMM HTTP library.
 It is a feature-complete KMM rewrite of the original Hoodies-Network library, available at https://github.com/gapinc/hoodies-network
+This is a test
 
 == Features
 
