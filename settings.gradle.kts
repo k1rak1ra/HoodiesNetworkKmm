@@ -1,4 +1,4 @@
-rootProject.name = "HoodiesNetworkKmm"
+rootProject.name = "HoodiesNetworkKmmProject"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -19,4 +19,4 @@ dependencyResolutionManagement {
 }
 
 include(":HoodiesNetworkKmmDemo")
-include(":hoodies_network_kmm")
+include(":HoodiesNetworkKmm")

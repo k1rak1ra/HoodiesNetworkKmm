@@ -48,13 +48,13 @@ kotlin {
             implementation(compose.ui)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
-            api(project(":hoodies_network_kmm"))
+            api(project(":HoodiesNetworkKmm"))
         }
     }
 }
 
 android {
-    namespace = "net.k1ra.hoodies_network_kmm"
+    namespace = "net.k1ra.hoodies_network_kmm_demo_app"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
