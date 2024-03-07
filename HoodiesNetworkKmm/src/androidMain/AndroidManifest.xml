@@ -5,7 +5,7 @@
 
     <application android:usesCleartextTraffic="true" >
         <provider
-            android:authorities="net.k1ra.hoodies_network_kmm.HoodiesNetworkInitContentProvider"
+            android:authorities="${applicationId}.HoodiesNetworkInitContentProvider"
             android:name=".HoodiesNetworkInitContentProvider"
             android:exported="false" />
     </application>
