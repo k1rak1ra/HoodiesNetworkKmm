@@ -23,8 +23,5 @@ jobs:
         with:
           xcode-version: latest-stable
 
-      - name: Run build
-        run: ./gradlew clean build
-
       - name: Publish
         run: ./gradlew HoodiesNetworkKmm:publish
