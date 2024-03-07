@@ -13,8 +13,8 @@ jobs:
         with:
           java-version: 17
       - run: ./gradlew lint
-      - uses: github/codeql-action/upload-sarif@v3
-        if: success() || failure()
+      - uses: yutailang0119/action-android-lint@v3
         with:
-          sarif_file: app/build/reports/lint-results-debug.sarif
-          category: lint
+          ignore-warnings: true # Ignore Lint Warnings
+          report-path: build/reports/*.xml # Support glob patterns by https://www.npmjs.com/package/@actions/glob
+        continue-on-error: false # If annotations contain error of severity, action-android-lint exit 1.
