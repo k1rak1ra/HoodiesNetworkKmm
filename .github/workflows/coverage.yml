@@ -24,6 +24,7 @@ jobs:
           path: |
             ${{ github.workspace }}/HoodiesNetworkKmm/build/reports/kover/reportDebug.xml
           title: Code Coverage
+          token: ${{ secrets.GITHUB_TOKEN }}
           update-comment: true
           min-coverage-overall: 80
           min-coverage-changed-files: 80
