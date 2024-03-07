@@ -10,7 +10,6 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
     id("maven-publish")
     alias(libs.plugins.sqlDelight)
-    alias(libs.plugins.kmmBridge)
     alias(libs.plugins.kover)
 }
 
@@ -57,11 +56,6 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework(iosFrameworkName)
-    }
-
-    kmmbridge {
-        buildType.set(NativeBuildType.DEBUG)
-        spm()
     }
 
     sourceSets {
