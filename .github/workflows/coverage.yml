@@ -19,7 +19,7 @@ jobs:
 
       - name: Add coverage report to PR
         id: kover
-        uses: mi-kas/kover-report@v1
+        uses: mi-kas/kover-report@v1.8
         with:
           path: |
             ${{ github.workspace }}/HoodiesNetworkKmm/build/reports/kover/reportDebug.xml
