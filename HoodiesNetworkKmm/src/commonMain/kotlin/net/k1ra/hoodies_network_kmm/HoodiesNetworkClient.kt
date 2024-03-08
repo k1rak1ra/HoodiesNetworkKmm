@@ -284,7 +284,7 @@ class HoodiesNetworkClient(val builder: Builder) {
     }
 
     private fun normalizeTailingSlashOnBaseUrl(url: String) : String {
-        return if (url.endsWith("/"))
+        return if (url.endsWith("/") || url.isEmpty())
             url
         else
             "$url/"
