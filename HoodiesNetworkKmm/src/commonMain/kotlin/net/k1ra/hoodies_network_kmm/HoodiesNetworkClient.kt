@@ -25,6 +25,7 @@ import kotlinx.coroutines.*
 import kotlinx.datetime.Clock
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import net.k1ra.hoodies_network_kmm.core.CustomDispatchers
 import net.k1ra.hoodies_network_kmm.core.FormUrlEncoder
 import kotlin.coroutines.resume
 import kotlin.time.Duration
@@ -187,7 +188,7 @@ class HoodiesNetworkClient(val builder: Builder) {
     }
 
     suspend fun spawnContinuationAndExec(request: NetworkRequest, cache: CacheConfiguration) : Result<*> = suspendCancellableCoroutine { continuation ->
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(CustomDispatchers.IO).launch {
             val identifier = Clock.System.now().toEpochMilliseconds().toString()
             retryAttempts[identifier] = 0
 
@@ -200,7 +201,7 @@ class HoodiesNetworkClient(val builder: Builder) {
         continuation: CancellableContinuation<Result<*>>,
         identifier: String,
         cacheConfig: CacheConfiguration
-    ) = CoroutineScope(Dispatchers.IO).launch {
+    ) = CoroutineScope(CustomDispatchers.IO).launch {
         //Intercept request and execute cancellation if requested
         for (interceptor in builder.interceptors) {
             val cancellableMutableRequest = CancellableMutableRequest(request)

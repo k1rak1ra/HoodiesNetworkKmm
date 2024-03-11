@@ -7,16 +7,16 @@ import net.k1ra.hoodies_network_kmm.database.DatabaseFactory
 import net.k1ra.hoodies_network_kmm.request.NetworkRequest
 import net.k1ra.hoodies_network_kmm.request.NetworkResponse
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
+import net.k1ra.hoodies_network_kmm.core.CustomDispatchers
 import kotlin.time.Duration.Companion.seconds
 
 class OptionallyEncryptedCache(private val cacheConfig: CacheEnabled) {
     private val db = DatabaseFactory.provideCacheDatabase()
 
-    fun cacheRequestResult(result: ByteArray, request: NetworkRequest) = CoroutineScope(Dispatchers.IO).launch {
+    fun cacheRequestResult(result: ByteArray, request: NetworkRequest) = CoroutineScope(
+        CustomDispatchers.IO).launch {
         var iv: ByteArray? = Cryptography.generateIv()
 
         val cachedResult = if (cacheConfig.encryptionEnabled) {

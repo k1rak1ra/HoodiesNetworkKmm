@@ -4,7 +4,7 @@
 
 == Introduction
 
-Hoodies-Network is a modern, type-safe, high-performance, and feature-rich KMM HTTP library.
+Hoodies-Network is a modern, type-safe, high-performance, and feature-rich Kotlin Multiplatform HTTP library.
 It is a feature-complete KMM rewrite of the original Hoodies-Network library, available at https://github.com/gapinc/hoodies-network
 
 == Features
@@ -21,6 +21,11 @@ It is a feature-complete KMM rewrite of the original Hoodies-Network library, av
 * Smart type-safe request body and response conversion using Kotlin Serialization
 * Built-in support for fetching a Compose ImageBitmap from a URL
 
+== Supported platforms
+* Android: All features supported
+* iOS: All features supported
+* JVM/Desktop: All features supported, but cached data does not persist across application launches
+* Web/WASM: Unsupported due to dependency issues
 
 == Usage Guide
 

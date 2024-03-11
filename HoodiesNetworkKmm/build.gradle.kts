@@ -57,6 +57,8 @@ kotlin {
         it.binaries.framework(iosFrameworkName)
     }
 
+    jvm()
+
     sourceSets {
         commonMain.dependencies {
             api(libs.kotlin.coroutines)
@@ -67,6 +69,7 @@ kotlin {
             implementation(libs.bundles.sqldelight.common)
             implementation(compose.foundation)
         }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
             implementation(libs.uuid)
@@ -78,8 +81,13 @@ kotlin {
             implementation(libs.sqldelight.driver.jdbc)
             implementation(libs.androidx.crypto)
         }
+
         iosMain.dependencies {
             implementation(libs.sqldelight.driver.ios)
+        }
+
+        jvmMain.dependencies {
+            implementation(libs.sqldelight.driver.jdbc)
         }
     }
 }
