@@ -39,6 +39,8 @@ $dokka.location:net.k1ra.hoodies_network_kmm.core/BaseNetwork/BaseNetwork/#/Poin
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BaseNetwork/execRequest/#net.k1ra.hoodies_network_kmm.request.NetworkRequest#net.k1ra.hoodies_network_kmm.config.HttpClientConfig/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-base-network/exec-request.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BitmapExtension///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-bitmap-extension/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BitmapExtension/toImageBitmap/kotlin.ByteArray#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-bitmap-extension/to-image-bitmap.html
+$dokka.location:net.k1ra.hoodies_network_kmm.core/CustomDispatchers///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-custom-dispatchers/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.core/CustomDispatchers/IO/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-custom-dispatchers/-i-o.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/FormUrlEncoder///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-form-url-encoder/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/FormUrlEncoder/decode/#kotlin.String/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-form-url-encoder/decode.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/FormUrlEncoder/encode/#kotlin.collections.Map[kotlin.String,kotlin.String]?/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-form-url-encoder/encode.html
