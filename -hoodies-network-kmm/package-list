@@ -34,8 +34,12 @@ $dokka.location:net.k1ra.hoodies_network_kmm.cookies/HttpCookie/HttpCookie/#kotl
 $dokka.location:net.k1ra.hoodies_network_kmm.cookies/HttpCookie/name/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies/-http-cookie/name.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cookies/HttpCookie/value/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies/-http-cookie/value.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core////PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.core//asByteArray/org.khronos.webgl.Uint8Array#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/as-byte-array.html
+$dokka.location:net.k1ra.hoodies_network_kmm.core//asJsArray/kotlin.ByteArray#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/as-js-array.html
+$dokka.location:net.k1ra.hoodies_network_kmm.core//toJsArrayImpl/#kotlin.ByteArray/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/to-js-array-impl.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BaseNetwork///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-base-network/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BaseNetwork/BaseNetwork/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-base-network/-base-network.html
+$dokka.location:net.k1ra.hoodies_network_kmm.core/BaseNetwork/execRequest/#[Error type: Unresolved type for NetworkRequest]#[Error type: Unresolved type for HttpClientConfig]/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-base-network/exec-request.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BaseNetwork/execRequest/#net.k1ra.hoodies_network_kmm.request.NetworkRequest#net.k1ra.hoodies_network_kmm.config.HttpClientConfig/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-base-network/exec-request.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BitmapExtension///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-bitmap-extension/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BitmapExtension/toImageBitmap/kotlin.ByteArray#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-bitmap-extension/to-image-bitmap.html
@@ -66,7 +70,7 @@ $dokka.location:net.k1ra.hoodies_network_kmm.database/DriverFactory///PointingTo
 $dokka.location:net.k1ra.hoodies_network_kmm.database/DriverFactory/DriverFactory/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.database/-driver-factory/-driver-factory.html
 $dokka.location:net.k1ra.hoodies_network_kmm.database/DriverFactory/createDriver/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.database/-driver-factory/create-driver.html
 $dokka.location:net.k1ra.hoodies_network_kmm.extensions////PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.extensions/index.html
-$dokka.location:net.k1ra.hoodies_network_kmm.extensions//toByteArray/[Error type: Unresolved type for NSData]#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.extensions/to-byte-array.html
+$dokka.location:net.k1ra.hoodies_network_kmm.extensions//toByteArray/platform.Foundation.NSData#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.extensions/to-byte-array.html
 $dokka.location:net.k1ra.hoodies_network_kmm.extensions//toNsData/kotlin.ByteArray#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.extensions/to-ns-data.html
 $dokka.location:net.k1ra.hoodies_network_kmm.interceptor////PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.interceptor/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.interceptor/Interceptor///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.interceptor/-interceptor/index.html
@@ -215,4 +219,3 @@ net.k1ra.hoodies_network_kmm.mockwebserver.helper
 net.k1ra.hoodies_network_kmm.request
 net.k1ra.hoodies_network_kmm.result
 net.k1ra.hoodies_network_kmm.util
-
