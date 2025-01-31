@@ -1,5 +1,7 @@
 package net.k1ra.hoodies_network_kmm.cache
 
+import app.cash.sqldelight.async.coroutines.awaitAsOne
+import app.cash.sqldelight.async.coroutines.awaitAsOneOrNull
 import net.k1ra.hoodies_network_kmm.cache.configuration.CacheEnabled
 import net.k1ra.hoodies_network_kmm.cryptography.CipherMode
 import net.k1ra.hoodies_network_kmm.cryptography.Cryptography
@@ -10,18 +12,25 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import net.k1ra.hoodies_network_kmm.core.CustomDispatchers
+import net.k1ra.hoodiesnetworkkmm.database.HoodiesNetworkCacheDatabaseQueries
 import kotlin.time.Duration.Companion.seconds
 
 class OptionallyEncryptedCache(private val cacheConfig: CacheEnabled) {
-    private val db = DatabaseFactory.provideCacheDatabase()
+    private var db: HoodiesNetworkCacheDatabaseQueries? = null
 
-    fun cacheRequestResult(result: ByteArray, request: NetworkRequest) = CoroutineScope(
+    private suspend fun getDb() : HoodiesNetworkCacheDatabaseQueries {
+        if (db == null)
+            db = DatabaseFactory.provideCacheDatabase()
+        return db!!
+    }
+
+    suspend fun cacheRequestResult(result: ByteArray, request: NetworkRequest) = CoroutineScope(
         CustomDispatchers.IO).launch {
         var iv: ByteArray? = Cryptography.generateIv()
 
         val cachedResult = if (cacheConfig.encryptionEnabled) {
             //Make sure the IV is unique
-            while (db.getByIv(iv).executeAsOne() > 0)
+            while (getDb().getByIv(iv).awaitAsOne() > 0)
                 iv = Cryptography.generateIv()
 
             //Encrypt the data
@@ -31,8 +40,8 @@ class OptionallyEncryptedCache(private val cacheConfig: CacheEnabled) {
             result
         }
 
-        db.delete(request.url, request.body.contentHashCode().toLong())
-        db.insert(
+        getDb().delete(request.url, request.body.contentHashCode().toLong())
+        getDb().insert(
             request.url,
             request.body.contentHashCode().toLong(),
             getCurrentSeconds(),
@@ -41,8 +50,8 @@ class OptionallyEncryptedCache(private val cacheConfig: CacheEnabled) {
         )
     }
 
-    fun getCachedData(request: NetworkRequest) : NetworkResponse {
-        val cachedData = db.get(request.url, request.body.contentHashCode().toLong()).executeAsOne()
+    suspend fun getCachedData(request: NetworkRequest) : NetworkResponse {
+        val cachedData = getDb().get(request.url, request.body.contentHashCode().toLong()).awaitAsOne()
 
         val data = if (cachedData.iv != null) {
             Cryptography.runAes(cachedData.data_, cachedData.iv, CipherMode.DECRYPT)
@@ -63,8 +72,8 @@ class OptionallyEncryptedCache(private val cacheConfig: CacheEnabled) {
         return Clock.System.now().epochSeconds
     }
 
-    fun isDataStale(request: NetworkRequest): Boolean {
-        val data = db.get(request.url, request.body.contentHashCode().toLong()).executeAsOneOrNull()
+    suspend fun isDataStale(request: NetworkRequest): Boolean {
+        val data = getDb().get(request.url, request.body.contentHashCode().toLong()).awaitAsOneOrNull()
 
         return data == null || (getCurrentSeconds() - data.cachedAt).seconds > cacheConfig.staleDataThreshold
     }

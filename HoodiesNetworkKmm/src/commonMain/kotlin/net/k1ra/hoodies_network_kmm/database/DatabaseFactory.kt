@@ -5,7 +5,7 @@ import net.k1ra.hoodiesnetworkkmm.database.HoodiesNetworkCacheDatabaseQueries
 object DatabaseFactory {
     private var instance: HoodiesNetworkCacheDatabaseQueries? = null
 
-    fun provideCacheDatabase() : HoodiesNetworkCacheDatabaseQueries {
+    suspend fun provideCacheDatabase() : HoodiesNetworkCacheDatabaseQueries {
         if (instance == null)
             instance = HoodiesNetworkCacheDatabaseQueries(DriverFactory().createDriver())
 

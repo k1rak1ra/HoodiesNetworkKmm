@@ -25,7 +25,7 @@ It is a feature-complete KMM rewrite of the original Hoodies-Network library, av
 * Android: All features supported
 * iOS: All features supported
 * JVM/Desktop: All features supported, but cached data does not persist across application launches
-* Web/WASM: Unsupported due to dependency issues
+* Web/WASM: Most features supported: cached data does not persist across application launches, cache cannot be encrypted, and no MockWebServer
 
 == Usage Guide
 

@@ -1,10 +1,13 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinSerialization)
     id("maven-publish")
     alias(libs.plugins.sqlDelight)
@@ -19,8 +22,10 @@ sqldelight {
     databases {
         create("HoodiesNetworkDatabase") {
             packageName.set("net.k1ra.hoodies_network_kmm.database")
+            generateAsync.set(true)
         }
     }
+    linkSqlite = true
 }
 
 kotlin {
@@ -33,18 +38,8 @@ kotlin {
         publishLibraryVariants("release", "debug")
     }
 
-    targets.all {
-        compilations.all {
-            compilerOptions.configure {
-                freeCompilerArgs.add("-Xexpect-actual-classes")
-            }
-        }
-    }
-
-    targets.withType<KotlinNativeTarget> {
-        binaries.withType<Framework> {
-            linkerOpts.add("-lsqlite3")
-        }
+    compilerOptions {
+        freeCompilerArgs.add("-Xexpect-actual-classes")
     }
 
     val iosFrameworkName = "HoodiesNetworkKmm"
@@ -55,6 +50,24 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework(iosFrameworkName)
+    }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        binaries.executable()
+        browser {
+            val rootDirPath = project.rootDir.path
+            val projectDirPath = project.projectDir.path
+            commonWebpackConfig {
+                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
+                    static = (static ?: mutableListOf()).apply {
+                        // Serve sources to debug inside browser
+                        add(rootDirPath)
+                        add(projectDirPath)
+                    }
+                }
+            }
+        }
     }
 
     jvm()
@@ -88,6 +101,14 @@ kotlin {
 
         jvmMain.dependencies {
             implementation(libs.sqldelight.driver.jdbc)
+        }
+
+        wasmJsMain.dependencies {
+            implementation(libs.kotlinx.browser)
+            implementation(libs.sqldelight.driver.web)
+            implementation(npm("@cashapp/sqldelight-sqljs-worker", libs.versions.sqlJsWorker.get()))
+            implementation(npm("sql.js", libs.versions.sqlJs.get()))
+            implementation(devNpm("copy-webpack-plugin", libs.versions.webPackPlugin.get()))
         }
     }
 }
