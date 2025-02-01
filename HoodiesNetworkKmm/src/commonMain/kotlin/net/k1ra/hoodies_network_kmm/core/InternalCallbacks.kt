@@ -6,7 +6,7 @@ import net.k1ra.hoodies_network_kmm.result.Result
 import kotlinx.coroutines.CancellableContinuation
 
 interface InternalCallbacks {
-    fun successCallback(response: NetworkResponse, continuation: CancellableContinuation<Result<*>>, identifier: String)
+    suspend fun successCallback(response: NetworkResponse, continuation: CancellableContinuation<Result<*>>, identifier: String)
 
     fun failureCallback(error: HttpClientError, continuation: CancellableContinuation<Result<*>>, identifier: String)
 }

@@ -33,7 +33,7 @@ class RetryTests {
             var runs = 0
 
             val interceptor = object : Interceptor() {
-                override fun interceptError(
+                override suspend fun interceptError(
                     error: HttpClientError,
                     retryableCancellableMutableRequest: RetryableCancellableMutableRequest,
                     autoRetryAttempts: Int

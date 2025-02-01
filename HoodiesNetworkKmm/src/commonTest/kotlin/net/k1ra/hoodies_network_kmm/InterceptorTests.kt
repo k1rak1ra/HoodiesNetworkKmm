@@ -32,7 +32,7 @@ class InterceptorTests {
     fun cancelRequestInInterceptRequestTest() {
         runBlocking {
             val interceptor = object: Interceptor() {
-                override fun interceptRequest(identifier: String, cancellableMutableRequest: CancellableMutableRequest) {
+                override suspend fun interceptRequest(identifier: String, cancellableMutableRequest: CancellableMutableRequest) {
                     cancellableMutableRequest.cancelRequest(Success("Cancelled!"))
                 }
             }
@@ -57,7 +57,7 @@ class InterceptorTests {
     fun cancelFailedRequestTest() {
         runBlocking {
             val interceptor = object: Interceptor() {
-                override fun interceptError(
+                override suspend fun interceptError(
                     error: HttpClientError,
                     retryableCancellableMutableRequest: RetryableCancellableMutableRequest,
                     autoRetryAttempts: Int
@@ -88,7 +88,7 @@ class InterceptorTests {
         runBlocking {
             var counter = 0
             val interceptor = object: Interceptor() {
-                override fun interceptError(
+                override suspend fun interceptError(
                     error: HttpClientError,
                     retryableCancellableMutableRequest: RetryableCancellableMutableRequest,
                     autoRetryAttempts: Int

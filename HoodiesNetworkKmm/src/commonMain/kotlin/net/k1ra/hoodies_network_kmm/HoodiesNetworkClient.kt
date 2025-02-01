@@ -151,11 +151,11 @@ class HoodiesNetworkClient(val builder: Builder) {
 
     inline fun <reified T> buildDefaultCallback() : InternalCallbacks {
         return object : InternalCallbacks {
-            override fun successCallback(response: NetworkResponse, continuation: CancellableContinuation<Result<*>>, identifier: String) {
+            override suspend fun successCallback(response: NetworkResponse, continuation: CancellableContinuation<Result<*>>, identifier: String) {
                 val result = Success(convertResponseBody<T>(response.data), response)
 
                 for (interceptor in builder.interceptors)
-                    interceptor.interceptResponse(result)
+                    interceptor.interceptResponse(result, response)
 
                 completeRequestWithResult(continuation, result, identifier)
             }
