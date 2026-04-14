@@ -1,9 +1,7 @@
 package net.k1ra.hoodies_network_kmm.core
 
 import kotlinx.browser.window
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.datetime.Clock
 import net.k1ra.hoodies_network_kmm.config.HttpClientConfig
 import net.k1ra.hoodies_network_kmm.cookies.HttpCookie
 import net.k1ra.hoodies_network_kmm.request.NetworkRequest
@@ -14,17 +12,14 @@ import org.w3c.fetch.CORS
 import org.w3c.fetch.FOLLOW
 import org.w3c.fetch.Headers
 import org.w3c.fetch.NO_CACHE
-import org.w3c.fetch.NO_CORS
 import org.w3c.fetch.OMIT
 import org.w3c.fetch.RequestCache
 import org.w3c.fetch.RequestCredentials
 import org.w3c.fetch.RequestInit
 import org.w3c.fetch.RequestMode
 import org.w3c.fetch.RequestRedirect
-import org.w3c.fetch.Response
 import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.js.Promise
+import kotlin.time.Clock
 
 actual class BaseNetwork actual constructor() {
     actual suspend fun execRequest(request: NetworkRequest, config: HttpClientConfig): NetworkResponse = suspendCancellableCoroutine { continuation ->

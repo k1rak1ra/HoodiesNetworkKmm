@@ -1,55 +1,61 @@
 [versions]
-agp = "8.5.2"
-android-compileSdk = "35"
+agp = "8.13.2"
+android-compileSdk = "36"
 android-minSdk = "24"
-android-targetSdk = "35"
-androidx-activityCompose = "1.10.0"
-compose = "1.7.7"
-compose-multiplatform = "1.7.3"
-sqlDelight = "2.1.0-wasm"
-kotlin-serialization = "1.8.0"
-kotlin-coroutines = "1.10.1"
-kotlin-datetime = "0.6.1"
-androidx-crypto = "1.0.0"
-korlibs = "6.0.0"
-kover = "0.9.1"
-dokka = "2.0.0"
-kotlin = "2.1.0"
-kotlin2 = "1.9.0"
+android-targetSdk = "36"
+androidx-activityCompose = "1.13.0"
+compose = "1.10.3"
+composeHotReload = "1.0.0"
+kotlin = "2.3.20"
+sqlDelight = "2.3.2"
 sqlJs = "1.8.0"
-sqlJsWorker = "2.0.2"
+kotlin-serialization = "1.11.0"
+kotlin-coroutines = "1.10.2"
+kotlin-datetime = "0.7.1"
+androidx-crypto = "1.1.0"
+korlibs = "5.4.0"
+uuid = "0.8.4"
+kover = "0.9.8"
+dokka = "2.2.0"
+material3 = "1.10.0-alpha05"
 webPackPlugin = "9.1.0"
-browser = "0.3"
-uuid = "0.8.2"
+browser = "0.5.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
-sqldelight-driver-android = { module = "me.gulya.sqldelight:android-driver", version.ref = "sqlDelight" }
-sqldelight-driver-jdbc = { module = "me.gulya.sqldelight:sqlite-driver", version.ref = "sqlDelight" }
-sqldelight-driver-web = { module = "me.gulya.sqldelight:web-worker-driver", version.ref = "sqlDelight" }
-sqldelight-driver-ios = { module = "me.gulya.sqldelight:native-driver", version.ref = "sqlDelight" }
-sqldelight-coroutines = { module = "me.gulya.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
-sqldelight-runtime = { module = "me.gulya.sqldelight:runtime", version.ref = "sqlDelight" }
+sqldelight-driver-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
+sqldelight-driver-jdbc = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqlDelight" }
+sqldelight-driver-web = { module = "app.cash.sqldelight:web-worker-driver", version.ref = "sqlDelight" }
+sqldelight-driver-ios = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
+sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
+sqldelight-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqlDelight" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
 kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlin-coroutines" }
 kotlin-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlin-datetime" }
 androidx-crypto = { module = "androidx.security:security-crypto", version.ref="androidx-crypto" }
-korlibs-crypto = { module = "com.soywiz:korlibs-crypto", version.ref="korlibs" }
-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-kotlinx-browser = { module = "org.jetbrains.kotlinx:kotlinx-browser-wasm-js", version.ref = "browser" }
+korlibs-crypto = { module = "com.soywiz.korge:korlibs-crypto", version.ref="korlibs" }
 uuid = { module = "com.benasher44:uuid", version.ref="uuid" }
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
+compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose" }
+compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "compose" }
+compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "compose" }
+kotlinx-browser = { module = "org.jetbrains.kotlinx:kotlinx-browser-wasm-js", version.ref = "browser" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
-composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "composeHotReload" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-sqlDelight = { id = "me.gulya.sqldelight", version.ref = "sqlDelight" }
+sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 

@@ -6,12 +6,12 @@ import net.k1ra.hoodies_network_kmm.extensions.toByteArray
 import net.k1ra.hoodies_network_kmm.extensions.toNsData
 import net.k1ra.hoodies_network_kmm.request.NetworkRequest
 import net.k1ra.hoodies_network_kmm.request.NetworkResponse
-import kotlinx.datetime.Clock
 import platform.Foundation.*
 import platform.darwin.DISPATCH_TIME_FOREVER
 import platform.darwin.dispatch_semaphore_create
 import platform.darwin.dispatch_semaphore_signal
 import platform.darwin.dispatch_semaphore_wait
+import kotlin.time.Clock
 
 actual class BaseNetwork actual constructor() {
     actual suspend fun execRequest(request: NetworkRequest, config: HttpClientConfig): NetworkResponse {

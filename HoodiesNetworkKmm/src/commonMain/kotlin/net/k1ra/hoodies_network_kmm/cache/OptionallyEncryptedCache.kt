@@ -10,9 +10,9 @@ import net.k1ra.hoodies_network_kmm.request.NetworkRequest
 import net.k1ra.hoodies_network_kmm.request.NetworkResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.datetime.Clock
 import net.k1ra.hoodies_network_kmm.core.CustomDispatchers
-import net.k1ra.hoodiesnetworkkmm.database.HoodiesNetworkCacheDatabaseQueries
+import net.k1ra.hoodies_network_kmm.database.HoodiesNetworkCacheDatabaseQueries
+import kotlin.time.Clock
 import kotlin.time.Duration.Companion.seconds
 
 class OptionallyEncryptedCache(private val cacheConfig: CacheEnabled) {

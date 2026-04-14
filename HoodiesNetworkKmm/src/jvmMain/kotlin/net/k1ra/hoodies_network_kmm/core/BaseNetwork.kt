@@ -4,13 +4,13 @@ import net.k1ra.hoodies_network_kmm.config.HttpClientConfig
 import net.k1ra.hoodies_network_kmm.cookies.HttpCookie
 import net.k1ra.hoodies_network_kmm.request.NetworkRequest
 import net.k1ra.hoodies_network_kmm.request.NetworkResponse
-import kotlinx.datetime.Clock
 import java.io.IOException
 import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.SocketTimeoutException
 import java.net.URL
+import kotlin.time.Clock
 
 @Suppress("BlockingMethodInNonBlockingContext") //We're forcing this be only be called from coroutines by making it suspend, it's fine
 actual class BaseNetwork actual constructor() {

@@ -1,6 +1,5 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
@@ -8,6 +7,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.composeHotReload)
     alias(libs.plugins.kotlinSerialization)
     id("maven-publish")
     alias(libs.plugins.sqlDelight)
@@ -30,10 +30,8 @@ sqldelight {
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "11"
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
         publishLibraryVariants("release", "debug")
     }
@@ -80,13 +78,13 @@ kotlin {
             api(libs.kotlin.datetime)
             api(libs.korlibs.crypto)
             implementation(libs.bundles.sqldelight.common)
-            implementation(compose.foundation)
+            implementation(libs.compose.foundation)
         }
 
         commonTest.dependencies {
             implementation(libs.kotlin.test)
             implementation(libs.uuid)
-            implementation(compose.components.resources)
+            implementation(libs.compose.components.resources)
         }
 
         androidMain.dependencies {
@@ -106,7 +104,7 @@ kotlin {
         wasmJsMain.dependencies {
             implementation(libs.kotlinx.browser)
             implementation(libs.sqldelight.driver.web)
-            implementation(npm("@cashapp/sqldelight-sqljs-worker", libs.versions.sqlJsWorker.get()))
+            implementation(npm("@cashapp/sqldelight-sqljs-worker", libs.versions.sqlDelight.get()))
             implementation(npm("sql.js", libs.versions.sqlJs.get()))
             implementation(devNpm("copy-webpack-plugin", libs.versions.webPackPlugin.get()))
         }
