@@ -37,7 +37,7 @@ kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", 
 kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlin-coroutines" }
 kotlin-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlin-datetime" }
 androidx-crypto = { module = "androidx.security:security-crypto", version.ref="androidx-crypto" }
-korlibs-crypto = { module = "com.soywiz.korge:korlibs-crypto", version.ref="korlibs" }
+korlibs-crypto = { module = "com.soywiz:korlibs-crypto", version.ref="korlibs" }
 uuid = { module = "com.benasher44:uuid", version.ref="uuid" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }
 compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose" }
