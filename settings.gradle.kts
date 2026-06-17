@@ -27,6 +27,7 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
+        maven("https://k1ra.net/nexus/repository/public/")
     }
 }
 

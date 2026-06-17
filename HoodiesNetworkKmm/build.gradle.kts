@@ -43,7 +43,6 @@ kotlin {
     val iosFrameworkName = "HoodiesNetworkKmm"
 
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
@@ -79,6 +78,7 @@ kotlin {
             api(libs.korlibs.crypto)
             implementation(libs.bundles.sqldelight.common)
             implementation(libs.compose.foundation)
+            implementation(libs.k1ra.sharedpref)
         }
 
         commonTest.dependencies {
