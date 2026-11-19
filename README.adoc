@@ -25,7 +25,7 @@ It is a feature-complete KMM rewrite of the original Hoodies-Network library, av
 * Android: All features supported
 * iOS: All features supported
 * JVM/Desktop: All features supported, but cached data does not persist across application launches
-* Web/WASM: Most features supported: cached data does not persist across application launches, cache cannot be encrypted, and no MockWebServer
+* Web/WASM: Most features supported: cache cannot be encrypted, and no MockWebServer
 
 == Usage Guide
 
@@ -36,8 +36,6 @@ It is a feature-complete KMM rewrite of the original Hoodies-Network library, av
 ... `maven("https://k1ra.net/nexus/repository/public")`
 .. Add the dependency:
 ... `implementation("net.k1ra.hoodies_network_kmm:HoodiesNetworkKmm:latest.release")`
-.. Add the following linker flag to `Other Linker Flags` in your Xcode project:
-... `-lsqlite3`
 . Build your HttpClient (All parameters are optional):
 
 [source,kotlin]
@@ -290,12 +288,6 @@ The test classes are as follows:
 * RegularRequestTests
 * RetryTests
 * UrlQueryParamTests
-
-
-== Environment Setup
-
-* Since this is a KMM project, a modern version of Android Studio (2023.1.1 or newer) is required
-* Remember to configure Android Studio to use Java 17
 
 == Dokka
 https://k1rak1ra.github.io/HoodiesNetworkKmm/index.html
