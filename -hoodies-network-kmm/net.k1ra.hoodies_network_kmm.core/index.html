@@ -1,44 +1,41 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>net.k1ra.hoodies_network_kmm.core</title>
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
                     HoodiesNetworkKmm
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,19 +43,19 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-1.1.2        </div>
+2.0.0        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
-                        data-filter=":HoodiesNetworkKmm:dokkaHtml/androidMain">android</button>
-                <button class="platform-tag platform-selector common-like" data-active=""
-                        data-filter=":HoodiesNetworkKmm:dokkaHtml/commonMain">common</button>
-                <button class="platform-tag platform-selector common-like" data-active=""
-                        data-filter=":HoodiesNetworkKmm:dokkaHtml/iosMain">ios</button>
-                <button class="platform-tag platform-selector jvm-like" data-active=""
-                        data-filter=":HoodiesNetworkKmm:dokkaHtml/jvmMain">jvm</button>
-                <button class="platform-tag platform-selector wasm-like" data-active=""
-                        data-filter=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain">wasmJs</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":HoodiesNetworkKmm/androidMain">android</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
+                        data-filter=":HoodiesNetworkKmm/commonMain">common</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true"
+                        data-filter=":HoodiesNetworkKmm/iosMain">ios</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":HoodiesNetworkKmm/jvmMain">jvm</button>
+                <button class="platform-tag platform-selector wasm-like" data-active="" aria-pressed="true"
+                        data-filter=":HoodiesNetworkKmm/wasmJsMain">wasmJs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
                         data-role="dropdown-toggle"
@@ -67,48 +64,48 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm:dokkaHtml/androidMain"
-                                       data-filter=":HoodiesNetworkKmm:dokkaHtml/androidMain"/>
+                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm/androidMain"
+                                       data-filter=":HoodiesNetworkKmm/androidMain"/>
                                 <span class="checkbox--icon"></span>
                                 android
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm:dokkaHtml/commonMain"
-                                       data-filter=":HoodiesNetworkKmm:dokkaHtml/commonMain"/>
+                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm/commonMain"
+                                       data-filter=":HoodiesNetworkKmm/commonMain"/>
                                 <span class="checkbox--icon"></span>
                                 common
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm:dokkaHtml/iosMain"
-                                       data-filter=":HoodiesNetworkKmm:dokkaHtml/iosMain"/>
+                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm/iosMain"
+                                       data-filter=":HoodiesNetworkKmm/iosMain"/>
                                 <span class="checkbox--icon"></span>
                                 ios
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm:dokkaHtml/jvmMain"
-                                       data-filter=":HoodiesNetworkKmm:dokkaHtml/jvmMain"/>
+                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm/jvmMain"
+                                       data-filter=":HoodiesNetworkKmm/jvmMain"/>
                                 <span class="checkbox--icon"></span>
                                 jvm
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option wasm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"
-                                       data-filter=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"/>
+                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm/wasmJsMain"
+                                       data-filter=":HoodiesNetworkKmm/wasmJsMain"/>
                                 <span class="checkbox--icon"></span>
                                 wasmJs
                             </label>
@@ -116,7 +113,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -124,27 +121,29 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     HoodiesNetworkKmm
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="package" id="content" pageIds="HoodiesNetworkKmm::net.k1ra.hoodies_network_kmm.core////PointingToDeclaration//464070607">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="HoodiesNetworkKmm::net.k1ra.hoodies_network_kmm.core////PointingToDeclaration//519160989">
   <div class="breadcrumbs"><a href="../../index.html">HoodiesNetworkKmm</a><span class="delimiter">/</span><span class="current">net.k1ra.hoodies_network_kmm.core</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
@@ -153,84 +152,84 @@
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
-        <div class="table"><a data-name="-429854044%2FClasslikes%2F464070607" anchor-label="BaseNetwork" id="-429854044%2FClasslikes%2F464070607" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain"></a>
-          <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-429854044%2FClasslikes%2F519160989" anchor-label="BaseNetwork" id="-429854044%2FClasslikes%2F519160989" data-filterable-set=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-base-network/index.html"><span>Base</span><wbr></wbr><span><span>Network</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-429854044%2FClasslikes%2F464070607"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-429854044%2FClasslikes%2F519160989"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/androidMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/androidMain" data-active="" data-toggle=":HoodiesNetworkKmm:dokkaHtml/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/iosMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/iosMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/iosMain">ios</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/jvmMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/jvmMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-base-network/index.html">BaseNetwork</a></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">class </span><a href="-base-network/index.html">BaseNetwork</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/iosMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-base-network/index.html">BaseNetwork</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-base-network/index.html">BaseNetwork</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-base-network/index.html">BaseNetwork</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/androidMain" data-filterable-set=":HoodiesNetworkKmm/androidMain" data-active="" data-toggle=":HoodiesNetworkKmm/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain" data-toggle=":HoodiesNetworkKmm/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/iosMain" data-filterable-set=":HoodiesNetworkKmm/iosMain" data-toggle=":HoodiesNetworkKmm/iosMain">ios</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/jvmMain" data-filterable-set=":HoodiesNetworkKmm/jvmMain" data-toggle=":HoodiesNetworkKmm/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain" data-toggle=":HoodiesNetworkKmm/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-base-network/index.html">BaseNetwork</a></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">class </span><a href="-base-network/index.html">BaseNetwork</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/iosMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-base-network/index.html">BaseNetwork</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-base-network/index.html">BaseNetwork</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/wasmJsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-base-network/index.html">BaseNetwork</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2064557999%2FClasslikes%2F464070607" anchor-label="BitmapExtension" id="-2064557999%2FClasslikes%2F464070607" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain"></a>
-          <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain">
+<a data-name="-2064557999%2FClasslikes%2F519160989" anchor-label="BitmapExtension" id="-2064557999%2FClasslikes%2F519160989" data-filterable-set=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-bitmap-extension/index.html"><span>Bitmap</span><wbr></wbr><span><span>Extension</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2064557999%2FClasslikes%2F464070607"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2064557999%2FClasslikes%2F519160989"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/androidMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/androidMain" data-active="" data-toggle=":HoodiesNetworkKmm:dokkaHtml/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/iosMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/iosMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/iosMain">ios</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/jvmMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/jvmMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-bitmap-extension/index.html">BitmapExtension</a></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">object </span><a href="-bitmap-extension/index.html">BitmapExtension</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/iosMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-bitmap-extension/index.html">BitmapExtension</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-bitmap-extension/index.html">BitmapExtension</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-bitmap-extension/index.html">BitmapExtension</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/androidMain" data-filterable-set=":HoodiesNetworkKmm/androidMain" data-active="" data-toggle=":HoodiesNetworkKmm/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain" data-toggle=":HoodiesNetworkKmm/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/iosMain" data-filterable-set=":HoodiesNetworkKmm/iosMain" data-toggle=":HoodiesNetworkKmm/iosMain">ios</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/jvmMain" data-filterable-set=":HoodiesNetworkKmm/jvmMain" data-toggle=":HoodiesNetworkKmm/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain" data-toggle=":HoodiesNetworkKmm/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-bitmap-extension/index.html">BitmapExtension</a></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">object </span><a href="-bitmap-extension/index.html">BitmapExtension</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/iosMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-bitmap-extension/index.html">BitmapExtension</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-bitmap-extension/index.html">BitmapExtension</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/wasmJsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-bitmap-extension/index.html">BitmapExtension</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1449401350%2FClasslikes%2F464070607" anchor-label="CustomDispatchers" id="1449401350%2FClasslikes%2F464070607" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain"></a>
-          <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain">
+<a data-name="1449401350%2FClasslikes%2F519160989" anchor-label="CustomDispatchers" id="1449401350%2FClasslikes%2F519160989" data-filterable-set=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-custom-dispatchers/index.html"><span>Custom</span><wbr></wbr><span><span>Dispatchers</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1449401350%2FClasslikes%2F464070607"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1449401350%2FClasslikes%2F519160989"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/androidMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/androidMain" data-active="" data-toggle=":HoodiesNetworkKmm:dokkaHtml/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/iosMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/iosMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/iosMain">ios</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/jvmMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/jvmMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-toggle=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-custom-dispatchers/index.html">CustomDispatchers</a></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">object </span><a href="-custom-dispatchers/index.html">CustomDispatchers</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/iosMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-custom-dispatchers/index.html">CustomDispatchers</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-custom-dispatchers/index.html">CustomDispatchers</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-custom-dispatchers/index.html">CustomDispatchers</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/androidMain" data-filterable-set=":HoodiesNetworkKmm/androidMain" data-active="" data-toggle=":HoodiesNetworkKmm/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain" data-toggle=":HoodiesNetworkKmm/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/iosMain" data-filterable-set=":HoodiesNetworkKmm/iosMain" data-toggle=":HoodiesNetworkKmm/iosMain">ios</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/jvmMain" data-filterable-set=":HoodiesNetworkKmm/jvmMain" data-toggle=":HoodiesNetworkKmm/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain" data-toggle=":HoodiesNetworkKmm/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-custom-dispatchers/index.html">CustomDispatchers</a></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">object </span><a href="-custom-dispatchers/index.html">CustomDispatchers</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/iosMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-custom-dispatchers/index.html">CustomDispatchers</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-custom-dispatchers/index.html">CustomDispatchers</a></div></div><div class="content sourceset-dependent-content" data-togglable=":HoodiesNetworkKmm/wasmJsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-custom-dispatchers/index.html">CustomDispatchers</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1471083728%2FClasslikes%2F485167384" anchor-label="FormUrlEncoder" id="1471083728%2FClasslikes%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-          <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="1471083728%2FClasslikes%2F-1702793743" anchor-label="FormUrlEncoder" id="1471083728%2FClasslikes%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-form-url-encoder/index.html"><span>Form</span><wbr></wbr><span>Url</span><wbr></wbr><span><span>Encoder</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1471083728%2FClasslikes%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1471083728%2FClasslikes%2F-1702793743"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-form-url-encoder/index.html">FormUrlEncoder</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-form-url-encoder/index.html">FormUrlEncoder</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1706872656%2FClasslikes%2F485167384" anchor-label="InternalCallbacks" id="-1706872656%2FClasslikes%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-          <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="-1706872656%2FClasslikes%2F-1702793743" anchor-label="InternalCallbacks" id="-1706872656%2FClasslikes%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-internal-callbacks/index.html"><span>Internal</span><wbr></wbr><span><span>Callbacks</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1706872656%2FClasslikes%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1706872656%2FClasslikes%2F-1702793743"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-internal-callbacks/index.html">InternalCallbacks</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-internal-callbacks/index.html">InternalCallbacks</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -238,54 +237,54 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-415620499%2FFunctions%2F1748053695" anchor-label="asByteArray" id="-415620499%2FFunctions%2F1748053695" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-415620499%2FFunctions%2F-1640537649" anchor-label="asByteArray" id="-415620499%2FFunctions%2F-1640537649" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="as-byte-array.html"><span>as</span><wbr></wbr><span>Byte</span><wbr></wbr><span><span>Array</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-415620499%2FFunctions%2F1748053695"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-415620499%2FFunctions%2F-1640537649"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-active="" data-toggle=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/org.khronos.webgl/-uint8-array/index.html">Uint8Array</a><span class="token punctuation">.</span><a href="as-byte-array.html"><span class="token function">asByteArray</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain" data-active="" data-toggle=":HoodiesNetworkKmm/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="org.khronos.webgl/Uint8Array///PointingToDeclaration/">Uint8Array</span><span class="token punctuation">.</span><a href="as-byte-array.html"><span class="token function">asByteArray</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1392067710%2FFunctions%2F1748053695" anchor-label="asJsArray" id="-1392067710%2FFunctions%2F1748053695" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain">
+<a data-name="-1392067710%2FFunctions%2F-1640537649" anchor-label="asJsArray" id="-1392067710%2FFunctions%2F-1640537649" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="as-js-array.html"><span>as</span><wbr></wbr><span>Js</span><wbr></wbr><span><span>Array</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1392067710%2FFunctions%2F1748053695"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1392067710%2FFunctions%2F-1640537649"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-active="" data-toggle=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token punctuation">.</span><a href="as-js-array.html"><span class="token function">asJsArray</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/org.khronos.webgl/-uint8-array/index.html">Uint8Array</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain" data-active="" data-toggle=":HoodiesNetworkKmm/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token punctuation">.</span><a href="as-js-array.html"><span class="token function">asJsArray</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.khronos.webgl/Uint8Array///PointingToDeclaration/">Uint8Array</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="793766723%2FFunctions%2F1748053695" anchor-label="toJsArrayImpl" id="793766723%2FFunctions%2F1748053695" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"></a>
-          <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain">
+<a data-name="891318542%2FFunctions%2F-1640537649" anchor-label="toJsArrayImpl" id="891318542%2FFunctions%2F-1640537649" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-js-array-impl.html"><span>to</span><wbr></wbr><span>Js</span><wbr></wbr><span>Array</span><wbr></wbr><span><span>Impl</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="793766723%2FFunctions%2F1748053695"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="891318542%2FFunctions%2F-1640537649"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-active="" data-toggle=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="to-js-array-impl.html"><span class="token function">toJsArrayImpl</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte/index.html">Byte</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/org.khronos.webgl/-uint8-array/index.html">Uint8Array</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/wasmJsMain" data-active="" data-toggle=":HoodiesNetworkKmm/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":HoodiesNetworkKmm/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="to-js-array-impl.html"><span class="token function">toJsArrayImpl</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte/index.html">Byte</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.khronos.webgl/Uint8Array///PointingToDeclaration/">Uint8Array</span></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -296,17 +295,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

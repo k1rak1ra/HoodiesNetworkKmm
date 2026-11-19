@@ -8,7 +8,28 @@ $dokka.location:net.k1ra.hoodies_network_kmm.cache.configuration/CacheEnabled///
 $dokka.location:net.k1ra.hoodies_network_kmm.cache.configuration/CacheEnabled/CacheEnabled/#kotlin.time.Duration#kotlin.Boolean/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.configuration/-cache-enabled/-cache-enabled.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cache.configuration/CacheEnabled/encryptionEnabled/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.configuration/-cache-enabled/encryption-enabled.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cache.configuration/CacheEnabled/staleDataThreshold/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.configuration/-cache-enabled/stale-data-threshold.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database////PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheDao///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-dao/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheDao/delete/#kotlin.String#kotlin.Long/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-dao/delete.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheDao/get/#kotlin.String#kotlin.Long/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-dao/get.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheDao/getByIv/#kotlin.ByteArray?/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-dao/get-by-iv.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheDao/insert/#net.k1ra.hoodies_network_kmm.cache.database.CacheEntity/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-dao/insert.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheDatabase///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-database/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheDatabase/CacheDatabase/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-database/-cache-database.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheDatabase/getDao/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-database/get-dao.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheDatabaseBuilder///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-database-builder/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheDatabaseBuilder/initialize/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-database-builder/initialize.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheEntity///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-entity/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheEntity/CacheEntity/#kotlin.Long#kotlin.String#kotlin.Long#kotlin.Long#kotlin.ByteArray#kotlin.ByteArray?/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-entity/-cache-entity.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheEntity/bodyHash/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-entity/body-hash.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheEntity/cachedAt/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-entity/cached-at.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheEntity/data/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-entity/data.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheEntity/id/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-entity/id.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheEntity/iv/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-entity/iv.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache.database/CacheEntity/url/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/-cache-entity/url.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cache////PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache/OptionallyEncryptedCache.Companion///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache/-optionally-encrypted-cache/-companion/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cache/OptionallyEncryptedCache.Companion/getDb/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache/-optionally-encrypted-cache/-companion/get-db.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cache/OptionallyEncryptedCache///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache/-optionally-encrypted-cache/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cache/OptionallyEncryptedCache/OptionallyEncryptedCache/#net.k1ra.hoodies_network_kmm.cache.configuration.CacheEnabled/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache/-optionally-encrypted-cache/-optionally-encrypted-cache.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cache/OptionallyEncryptedCache/cacheRequestResult/#kotlin.ByteArray#net.k1ra.hoodies_network_kmm.request.NetworkRequest/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache/-optionally-encrypted-cache/cache-request-result.html
@@ -21,6 +42,23 @@ $dokka.location:net.k1ra.hoodies_network_kmm.config/HttpClientConfig///PointingT
 $dokka.location:net.k1ra.hoodies_network_kmm.config/HttpClientConfig/HttpClientConfig/#kotlin.time.Duration#kotlin.time.Duration/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.config/-http-client-config/-http-client-config.html
 $dokka.location:net.k1ra.hoodies_network_kmm.config/HttpClientConfig/connectTimeout/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.config/-http-client-config/connect-timeout.html
 $dokka.location:net.k1ra.hoodies_network_kmm.config/HttpClientConfig/readTimeout/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.config/-http-client-config/read-timeout.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database////PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database//databaseDirectory/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/database-directory.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieDao///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-dao/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieDao/delete/#kotlin.String/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-dao/delete.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieDao/deleteAll/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-dao/delete-all.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieDao/get/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-dao/get.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieDao/insert/#net.k1ra.hoodies_network_kmm.cookies.database.CookieEntity/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-dao/insert.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieDatabase///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-database/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieDatabase/CookieDatabase/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-database/-cookie-database.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieDatabase/getDao/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-database/get-dao.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieDatabaseBuilder///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-database-builder/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieDatabaseBuilder/initialize/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-database-builder/initialize.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieEntity///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-entity/index.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieEntity/CookieEntity/#kotlin.Long#kotlin.String#kotlin.String/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-entity/-cookie-entity.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieEntity/id/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-entity/id.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieEntity/name/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-entity/name.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cookies.database/CookieEntity/value/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/-cookie-entity/value.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cookies////PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cookies/CookieJar///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies/-cookie-jar/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cookies/CookieJar/CookieJar/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies/-cookie-jar/-cookie-jar.html
@@ -36,10 +74,9 @@ $dokka.location:net.k1ra.hoodies_network_kmm.cookies/HttpCookie/value/#/Pointing
 $dokka.location:net.k1ra.hoodies_network_kmm.core////PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core//asByteArray/org.khronos.webgl.Uint8Array#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/as-byte-array.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core//asJsArray/kotlin.ByteArray#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/as-js-array.html
-$dokka.location:net.k1ra.hoodies_network_kmm.core//toJsArrayImpl/#kotlin.ByteArray/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/to-js-array-impl.html
+$dokka.location:net.k1ra.hoodies_network_kmm.core//toJsArrayImpl/#vararg(kotlin.Byte)/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/to-js-array-impl.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BaseNetwork///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-base-network/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BaseNetwork/BaseNetwork/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-base-network/-base-network.html
-$dokka.location:net.k1ra.hoodies_network_kmm.core/BaseNetwork/execRequest/#[Error type: Unresolved type for NetworkRequest]#[Error type: Unresolved type for HttpClientConfig]/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-base-network/exec-request.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BaseNetwork/execRequest/#net.k1ra.hoodies_network_kmm.request.NetworkRequest#net.k1ra.hoodies_network_kmm.config.HttpClientConfig/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-base-network/exec-request.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BitmapExtension///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-bitmap-extension/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.core/BitmapExtension/toImageBitmap/kotlin.ByteArray#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/-bitmap-extension/to-image-bitmap.html
@@ -55,20 +92,12 @@ $dokka.location:net.k1ra.hoodies_network_kmm.cryptography////PointingToDeclarati
 $dokka.location:net.k1ra.hoodies_network_kmm.cryptography/CipherMode.DECRYPT///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cipher-mode/-d-e-c-r-y-p-t/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cryptography/CipherMode.ENCRYPT///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cipher-mode/-e-n-c-r-y-p-t/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cryptography/CipherMode///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cipher-mode/index.html
-$dokka.location:net.k1ra.hoodies_network_kmm.cryptography/CipherMode/entries/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cipher-mode/entries.html
-$dokka.location:net.k1ra.hoodies_network_kmm.cryptography/CipherMode/valueOf/#kotlin.String/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cipher-mode/value-of.html
-$dokka.location:net.k1ra.hoodies_network_kmm.cryptography/CipherMode/values/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cipher-mode/values.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cryptography/CipherMode/entries/#/companion/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cipher-mode/entries.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cryptography/CipherMode/valueOf/#kotlin.String/companion/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cipher-mode/value-of.html
+$dokka.location:net.k1ra.hoodies_network_kmm.cryptography/CipherMode/values/#/companion/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cipher-mode/values.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cryptography/Cryptography///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cryptography/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cryptography/Cryptography/generateIv/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cryptography/generate-iv.html
 $dokka.location:net.k1ra.hoodies_network_kmm.cryptography/Cryptography/runAes/#kotlin.ByteArray#kotlin.ByteArray#net.k1ra.hoodies_network_kmm.cryptography.CipherMode/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-cryptography/run-aes.html
-$dokka.location:net.k1ra.hoodies_network_kmm.cryptography/KeyManager///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-key-manager/index.html
-$dokka.location:net.k1ra.hoodies_network_kmm.cryptography/KeyManager/getKey/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/-key-manager/get-key.html
-$dokka.location:net.k1ra.hoodies_network_kmm.database////PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.database/index.html
-$dokka.location:net.k1ra.hoodies_network_kmm.database/DatabaseFactory///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.database/-database-factory/index.html
-$dokka.location:net.k1ra.hoodies_network_kmm.database/DatabaseFactory/provideCacheDatabase/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.database/-database-factory/provide-cache-database.html
-$dokka.location:net.k1ra.hoodies_network_kmm.database/DriverFactory///PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.database/-driver-factory/index.html
-$dokka.location:net.k1ra.hoodies_network_kmm.database/DriverFactory/DriverFactory/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.database/-driver-factory/-driver-factory.html
-$dokka.location:net.k1ra.hoodies_network_kmm.database/DriverFactory/createDriver/#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.database/-driver-factory/create-driver.html
 $dokka.location:net.k1ra.hoodies_network_kmm.extensions////PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.extensions/index.html
 $dokka.location:net.k1ra.hoodies_network_kmm.extensions//toByteArray/platform.Foundation.NSData#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.extensions/to-byte-array.html
 $dokka.location:net.k1ra.hoodies_network_kmm.extensions//toNsData/kotlin.ByteArray#/PointingToDeclaration/-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.extensions/to-ns-data.html
@@ -207,11 +236,12 @@ $dokka.location:net.k1ra.hoodies_network_kmm/HoodiesNetworkInitContentProvider/u
 net.k1ra.hoodies_network_kmm
 net.k1ra.hoodies_network_kmm.cache
 net.k1ra.hoodies_network_kmm.cache.configuration
+net.k1ra.hoodies_network_kmm.cache.database
 net.k1ra.hoodies_network_kmm.config
 net.k1ra.hoodies_network_kmm.cookies
+net.k1ra.hoodies_network_kmm.cookies.database
 net.k1ra.hoodies_network_kmm.core
 net.k1ra.hoodies_network_kmm.cryptography
-net.k1ra.hoodies_network_kmm.database
 net.k1ra.hoodies_network_kmm.extensions
 net.k1ra.hoodies_network_kmm.interceptor
 net.k1ra.hoodies_network_kmm.mockwebserver

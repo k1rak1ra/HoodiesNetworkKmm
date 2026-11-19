@@ -1,44 +1,41 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>HoodiesNetworkKmm</title>
     <link href="images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script>
 <link href="styles/style.css" rel="Stylesheet">
 <link href="styles/main.css" rel="Stylesheet">
 <link href="styles/prism.css" rel="Stylesheet">
 <link href="styles/logo-styles.css" rel="Stylesheet">
-<link href="styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="index.html" tabindex="1">
                     HoodiesNetworkKmm
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,19 +43,19 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-1.1.2        </div>
+2.0.0        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
-                        data-filter=":HoodiesNetworkKmm:dokkaHtml/androidMain">android</button>
-                <button class="platform-tag platform-selector common-like" data-active=""
-                        data-filter=":HoodiesNetworkKmm:dokkaHtml/commonMain">common</button>
-                <button class="platform-tag platform-selector common-like" data-active=""
-                        data-filter=":HoodiesNetworkKmm:dokkaHtml/iosMain">ios</button>
-                <button class="platform-tag platform-selector jvm-like" data-active=""
-                        data-filter=":HoodiesNetworkKmm:dokkaHtml/jvmMain">jvm</button>
-                <button class="platform-tag platform-selector wasm-like" data-active=""
-                        data-filter=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain">wasmJs</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":HoodiesNetworkKmm/androidMain">android</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
+                        data-filter=":HoodiesNetworkKmm/commonMain">common</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true"
+                        data-filter=":HoodiesNetworkKmm/iosMain">ios</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":HoodiesNetworkKmm/jvmMain">jvm</button>
+                <button class="platform-tag platform-selector wasm-like" data-active="" aria-pressed="true"
+                        data-filter=":HoodiesNetworkKmm/wasmJsMain">wasmJs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
                         data-role="dropdown-toggle"
@@ -67,48 +64,48 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm:dokkaHtml/androidMain"
-                                       data-filter=":HoodiesNetworkKmm:dokkaHtml/androidMain"/>
+                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm/androidMain"
+                                       data-filter=":HoodiesNetworkKmm/androidMain"/>
                                 <span class="checkbox--icon"></span>
                                 android
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm:dokkaHtml/commonMain"
-                                       data-filter=":HoodiesNetworkKmm:dokkaHtml/commonMain"/>
+                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm/commonMain"
+                                       data-filter=":HoodiesNetworkKmm/commonMain"/>
                                 <span class="checkbox--icon"></span>
                                 common
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm:dokkaHtml/iosMain"
-                                       data-filter=":HoodiesNetworkKmm:dokkaHtml/iosMain"/>
+                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm/iosMain"
+                                       data-filter=":HoodiesNetworkKmm/iosMain"/>
                                 <span class="checkbox--icon"></span>
                                 ios
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm:dokkaHtml/jvmMain"
-                                       data-filter=":HoodiesNetworkKmm:dokkaHtml/jvmMain"/>
+                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm/jvmMain"
+                                       data-filter=":HoodiesNetworkKmm/jvmMain"/>
                                 <span class="checkbox--icon"></span>
                                 jvm
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option wasm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"
-                                       data-filter=":HoodiesNetworkKmm:dokkaHtml/wasmJsMain"/>
+                                <input type="checkbox" class="checkbox--input" id=":HoodiesNetworkKmm/wasmJsMain"
+                                       data-filter=":HoodiesNetworkKmm/wasmJsMain"/>
                                 <span class="checkbox--icon"></span>
                                 wasmJs
                             </label>
@@ -116,7 +113,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -124,42 +121,44 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     HoodiesNetworkKmm
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" id="content" pageIds="HoodiesNetworkKmm::////PointingToDeclaration//464070607">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" id="content" pageIds="HoodiesNetworkKmm::////PointingToDeclaration//519160989">
   <div class="breadcrumbs"></div>
   <div class="cover ">
     <h1 class="cover"><span>Hoodies</span><wbr></wbr><span>Network</span><wbr></wbr><span><span>Kmm</span></span></h1>
   </div>
   <h2 class="">Packages</h2>
-  <div class="table"><a data-name="-1311315792%2FPackages%2F-1453176798" anchor-label="net.k1ra.hoodies_network_kmm" id="-1311315792%2FPackages%2F-1453176798" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain">
+  <div class="table"><a data-name="-1311315792%2FPackages%2F-264754476" anchor-label="net.k1ra.hoodies_network_kmm" id="-1311315792%2FPackages%2F-264754476" data-filterable-set=":HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm/index.html">net.k1ra.hoodies_network_kmm</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1311315792%2FPackages%2F-1453176798"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1311315792%2FPackages%2F-264754476"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
               <div class="platform-tag common-like">common</div>
@@ -169,16 +168,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="785203524%2FPackages%2F485167384" anchor-label="net.k1ra.hoodies_network_kmm.cache" id="785203524%2FPackages%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="785203524%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.cache" id="785203524%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache/index.html">net.k1ra.hoodies_network_kmm.cache</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="785203524%2FPackages%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="785203524%2FPackages%2F-1702793743"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -187,16 +186,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-371735732%2FPackages%2F485167384" anchor-label="net.k1ra.hoodies_network_kmm.cache.configuration" id="-371735732%2FPackages%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="-371735732%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.cache.configuration" id="-371735732%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.configuration/index.html">net.k1ra.hoodies_network_kmm.cache.configuration</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-371735732%2FPackages%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-371735732%2FPackages%2F-1702793743"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -205,16 +204,34 @@
         <div></div>
       </div>
     </div>
-<a data-name="1322345028%2FPackages%2F485167384" anchor-label="net.k1ra.hoodies_network_kmm.config" id="1322345028%2FPackages%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="-182873815%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.cache.database" id="-182873815%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cache.database/index.html">net.k1ra.hoodies_network_kmm.cache.database</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-182873815%2FPackages%2F-1702793743"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1322345028%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.config" id="1322345028%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.config/index.html">net.k1ra.hoodies_network_kmm.config</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1322345028%2FPackages%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1322345028%2FPackages%2F-1702793743"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -223,16 +240,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="2029622801%2FPackages%2F485167384" anchor-label="net.k1ra.hoodies_network_kmm.cookies" id="2029622801%2FPackages%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="2029622801%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.cookies" id="2029622801%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies/index.html">net.k1ra.hoodies_network_kmm.cookies</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2029622801%2FPackages%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2029622801%2FPackages%2F-1702793743"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -241,20 +258,39 @@
         <div></div>
       </div>
     </div>
-<a data-name="171527265%2FPackages%2F464070607" anchor-label="net.k1ra.hoodies_network_kmm.core" id="171527265%2FPackages%2F464070607" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain">
+<a data-name="341529340%2FPackages%2F-1303605656" anchor-label="net.k1ra.hoodies_network_kmm.cookies.database" id="341529340%2FPackages%2F-1303605656" data-filterable-set=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/iosMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/iosMain" data-filterable-set=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/iosMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cookies.database/index.html">net.k1ra.hoodies_network_kmm.cookies.database</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="341529340%2FPackages%2F-1303605656"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+              <div class="platform-tag native-like">ios</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="171527265%2FPackages%2F519160989" anchor-label="net.k1ra.hoodies_network_kmm.core" id="171527265%2FPackages%2F519160989" data-filterable-set=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm/commonMain,:HoodiesNetworkKmm/androidMain,:HoodiesNetworkKmm/iosMain,:HoodiesNetworkKmm/jvmMain,:HoodiesNetworkKmm/wasmJsMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.core/index.html">net.k1ra.hoodies_network_kmm.core</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="171527265%2FPackages%2F464070607"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="171527265%2FPackages%2F519160989"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
               <div class="platform-tag common-like">common</div>
-              <div class="platform-tag common-like">ios</div>
+              <div class="platform-tag native-like">ios</div>
               <div class="platform-tag jvm-like">jvm</div>
               <div class="platform-tag wasm-like">wasmJs</div>
             </div>
@@ -263,78 +299,52 @@
         <div></div>
       </div>
     </div>
-<a data-name="-60109970%2FPackages%2F464070607" anchor-label="net.k1ra.hoodies_network_kmm.cryptography" id="-60109970%2FPackages%2F464070607" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain">
+<a data-name="-60109970%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.cryptography" id="-60109970%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.cryptography/index.html">net.k1ra.hoodies_network_kmm.cryptography</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-60109970%2FPackages%2F464070607"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-60109970%2FPackages%2F-1702793743"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
-              <div class="platform-tag jvm-like">android</div>
               <div class="platform-tag common-like">common</div>
-              <div class="platform-tag common-like">ios</div>
-              <div class="platform-tag jvm-like">jvm</div>
-              <div class="platform-tag wasm-like">wasmJs</div>
             </div>
           </div>
         </div>
         <div></div>
       </div>
     </div>
-<a data-name="-1007189187%2FPackages%2F464070607" anchor-label="net.k1ra.hoodies_network_kmm.database" id="-1007189187%2FPackages%2F464070607" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/androidMain,:HoodiesNetworkKmm:dokkaHtml/commonMain,:HoodiesNetworkKmm:dokkaHtml/iosMain,:HoodiesNetworkKmm:dokkaHtml/jvmMain,:HoodiesNetworkKmm:dokkaHtml/wasmJsMain">
-      <div>
-        <div class="main-subrow ">
-          <div class=""><span class="inline-flex">
-              <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.database/index.html">net.k1ra.hoodies_network_kmm.database</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1007189187%2FPackages%2F464070607"></span>
-                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-              </span></span></div>
-          <div class="pull-right">
-            <div class="platform-tags no-gutters">
-              <div class="platform-tag jvm-like">android</div>
-              <div class="platform-tag common-like">common</div>
-              <div class="platform-tag common-like">ios</div>
-              <div class="platform-tag jvm-like">jvm</div>
-              <div class="platform-tag wasm-like">wasmJs</div>
-            </div>
-          </div>
-        </div>
-        <div></div>
-      </div>
-    </div>
-<a data-name="-382027626%2FPackages%2F-133258880" anchor-label="net.k1ra.hoodies_network_kmm.extensions" id="-382027626%2FPackages%2F-133258880" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/iosMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/iosMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/iosMain">
+<a data-name="-382027626%2FPackages%2F937391213" anchor-label="net.k1ra.hoodies_network_kmm.extensions" id="-382027626%2FPackages%2F937391213" data-filterable-set=":HoodiesNetworkKmm/iosMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/iosMain" data-filterable-set=":HoodiesNetworkKmm/iosMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.extensions/index.html">net.k1ra.hoodies_network_kmm.extensions</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-382027626%2FPackages%2F-133258880"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-382027626%2FPackages%2F937391213"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
-              <div class="platform-tag common-like">ios</div>
+              <div class="platform-tag native-like">ios</div>
             </div>
           </div>
         </div>
         <div></div>
       </div>
     </div>
-<a data-name="-706037209%2FPackages%2F485167384" anchor-label="net.k1ra.hoodies_network_kmm.interceptor" id="-706037209%2FPackages%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="-706037209%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.interceptor" id="-706037209%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.interceptor/index.html">net.k1ra.hoodies_network_kmm.interceptor</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-706037209%2FPackages%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-706037209%2FPackages%2F-1702793743"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -343,16 +353,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="2051819343%2FPackages%2F485167384" anchor-label="net.k1ra.hoodies_network_kmm.mockwebserver" id="2051819343%2FPackages%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="2051819343%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.mockwebserver" id="2051819343%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.mockwebserver/index.html">net.k1ra.hoodies_network_kmm.mockwebserver</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2051819343%2FPackages%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2051819343%2FPackages%2F-1702793743"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -361,16 +371,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="1659355185%2FPackages%2F485167384" anchor-label="net.k1ra.hoodies_network_kmm.mockwebserver.helper" id="1659355185%2FPackages%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="1659355185%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.mockwebserver.helper" id="1659355185%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.mockwebserver.helper/index.html">net.k1ra.hoodies_network_kmm.mockwebserver.helper</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1659355185%2FPackages%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1659355185%2FPackages%2F-1702793743"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -379,16 +389,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="1993033233%2FPackages%2F485167384" anchor-label="net.k1ra.hoodies_network_kmm.request" id="1993033233%2FPackages%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="1993033233%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.request" id="1993033233%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.request/index.html">net.k1ra.hoodies_network_kmm.request</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1993033233%2FPackages%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1993033233%2FPackages%2F-1702793743"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -397,16 +407,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-1557398689%2FPackages%2F485167384" anchor-label="net.k1ra.hoodies_network_kmm.result" id="-1557398689%2FPackages%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="-1557398689%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.result" id="-1557398689%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.result/index.html">net.k1ra.hoodies_network_kmm.result</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1557398689%2FPackages%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1557398689%2FPackages%2F-1702793743"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -415,16 +425,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-20248828%2FPackages%2F485167384" anchor-label="net.k1ra.hoodies_network_kmm.util" id="-20248828%2FPackages%2F485167384" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain"></a>
-    <div class="table-row" data-filterable-current=":HoodiesNetworkKmm:dokkaHtml/commonMain" data-filterable-set=":HoodiesNetworkKmm:dokkaHtml/commonMain">
+<a data-name="-20248828%2FPackages%2F-1702793743" anchor-label="net.k1ra.hoodies_network_kmm.util" id="-20248828%2FPackages%2F-1702793743" data-filterable-set=":HoodiesNetworkKmm/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":HoodiesNetworkKmm/commonMain" data-filterable-set=":HoodiesNetworkKmm/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="-hoodies-network-kmm/net.k1ra.hoodies_network_kmm.util/index.html">net.k1ra.hoodies_network_kmm.util</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-20248828%2FPackages%2F485167384"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-20248828%2FPackages%2F-1702793743"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -436,17 +446,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
