@@ -1,36 +1,41 @@
 package net.k1ra.hoodies_network_kmm.cache
 
-import app.cash.sqldelight.async.coroutines.awaitAsOne
-import app.cash.sqldelight.async.coroutines.awaitAsOneOrNull
 import net.k1ra.hoodies_network_kmm.cache.configuration.CacheEnabled
 import net.k1ra.hoodies_network_kmm.cryptography.CipherMode
 import net.k1ra.hoodies_network_kmm.cryptography.Cryptography
-import net.k1ra.hoodies_network_kmm.database.DatabaseFactory
 import net.k1ra.hoodies_network_kmm.request.NetworkRequest
 import net.k1ra.hoodies_network_kmm.request.NetworkResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import net.k1ra.hoodies_network_kmm.cache.database.CacheDao
+import net.k1ra.hoodies_network_kmm.cache.database.CacheEntity
+import net.k1ra.hoodies_network_kmm.cache.database.buildCacheDatabase
 import net.k1ra.hoodies_network_kmm.core.CustomDispatchers
-import net.k1ra.hoodies_network_kmm.database.HoodiesNetworkCacheDatabaseQueries
 import kotlin.time.Clock
 import kotlin.time.Duration.Companion.seconds
 
 class OptionallyEncryptedCache(private val cacheConfig: CacheEnabled) {
-    private var db: HoodiesNetworkCacheDatabaseQueries? = null
+    companion object {
+        private var db: CacheDao? = null
+        private val dbMutex = Mutex()
+        private val writeMutex = Mutex()
 
-    private suspend fun getDb() : HoodiesNetworkCacheDatabaseQueries {
-        if (db == null)
-            db = DatabaseFactory.provideCacheDatabase()
-        return db!!
+        suspend fun getDb() : CacheDao {
+            db?.let { return it }
+            return dbMutex.withLock {
+                db ?: buildCacheDatabase().getDao().also { db = it }
+            }
+        }
     }
 
-    suspend fun cacheRequestResult(result: ByteArray, request: NetworkRequest) = CoroutineScope(
-        CustomDispatchers.IO).launch {
+    fun cacheRequestResult(result: ByteArray, request: NetworkRequest) = CoroutineScope(CustomDispatchers.IO).launch {
         var iv: ByteArray? = Cryptography.generateIv()
 
         val cachedResult = if (cacheConfig.encryptionEnabled) {
             //Make sure the IV is unique
-            while (getDb().getByIv(iv).awaitAsOne() > 0)
+            while (getDb().getByIv(iv) > 0)
                 iv = Cryptography.generateIv()
 
             //Encrypt the data
@@ -40,23 +45,27 @@ class OptionallyEncryptedCache(private val cacheConfig: CacheEnabled) {
             result
         }
 
-        getDb().delete(request.url, request.body.contentHashCode().toLong())
-        getDb().insert(
-            request.url,
-            request.body.contentHashCode().toLong(),
-            getCurrentSeconds(),
-            cachedResult,
-            iv
-        )
+        writeMutex.withLock {
+            getDb().delete(request.url, request.body.contentHashCode().toLong())
+            getDb().insert(
+                CacheEntity(
+                    url = request.url,
+                    bodyHash = request.body.contentHashCode().toLong(),
+                    cachedAt = getCurrentSeconds(),
+                    data = cachedResult,
+                    iv = iv
+                )
+            )
+        }
     }
 
     suspend fun getCachedData(request: NetworkRequest) : NetworkResponse {
-        val cachedData = getDb().get(request.url, request.body.contentHashCode().toLong()).awaitAsOne()
+        val cachedData = getDb().get(request.url, request.body.contentHashCode().toLong())!!
 
         val data = if (cachedData.iv != null) {
-            Cryptography.runAes(cachedData.data_, cachedData.iv, CipherMode.DECRYPT)
+            Cryptography.runAes(cachedData.data, cachedData.iv, CipherMode.DECRYPT)
         } else {
-            cachedData.data_
+            cachedData.data
         }
 
         return NetworkResponse(
@@ -73,7 +82,7 @@ class OptionallyEncryptedCache(private val cacheConfig: CacheEnabled) {
     }
 
     suspend fun isDataStale(request: NetworkRequest): Boolean {
-        val data = getDb().get(request.url, request.body.contentHashCode().toLong()).awaitAsOneOrNull()
+        val data = getDb().get(request.url, request.body.contentHashCode().toLong())
 
         return data == null || (getCurrentSeconds() - data.cachedAt).seconds > cacheConfig.staleDataThreshold
     }

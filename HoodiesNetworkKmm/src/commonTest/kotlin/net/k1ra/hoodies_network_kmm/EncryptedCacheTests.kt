@@ -3,14 +3,17 @@
 package net.k1ra.hoodies_network_kmm
 
 import com.benasher44.uuid.uuid4
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
+import net.k1ra.hoodies_network_kmm.cache.OptionallyEncryptedCache
 import net.k1ra.hoodies_network_kmm.cache.configuration.CacheEnabled
+import net.k1ra.hoodies_network_kmm.cache.database.CacheEntity
 import net.k1ra.hoodies_network_kmm.config.HttpClientConfig
 import net.k1ra.hoodies_network_kmm.cryptography.CipherMode
 import net.k1ra.hoodies_network_kmm.cryptography.Cryptography
-import net.k1ra.hoodies_network_kmm.database.DatabaseFactory
 import net.k1ra.hoodies_network_kmm.mockwebserver.ServerManager
 import net.k1ra.hoodies_network_kmm.result.Failure
 import net.k1ra.hoodies_network_kmm.result.Success
@@ -23,6 +26,9 @@ import kotlin.time.Duration.Companion.seconds
 
 class EncryptedCacheTests {
     private val kotlinJson = Json { ignoreUnknownKeys = true }
+
+    // runTest skips delay() via virtual time; cache writes and staleness checks need wall-clock time
+    private suspend fun realDelay(ms: Long) = withContext(Dispatchers.Default) { delay(ms) }
 
     @BeforeTest
     fun startServer() {
@@ -37,8 +43,8 @@ class EncryptedCacheTests {
 
     @Test
     fun makeSureDataWasCached() {
-        runBlocking {
-            val db = DatabaseFactory.provideCacheDatabase()
+        runTest {
+            val db = OptionallyEncryptedCache.getDb()
             val testData = uuid4().toString()
 
             val client = HoodiesNetworkClient.Builder().apply {
@@ -53,11 +59,11 @@ class EncryptedCacheTests {
 
                     val url = "${ServerManager.testBaseUrl}/post"
                     //Wait for cache data to be written on another thread
-                    delay(1000)
+                    realDelay(1000)
 
                     //Get the cached data
-                    val cachedData = db.get(url, "\"$testData\"".encodeToByteArray().contentHashCode().toLong()).executeAsOne()
-                    var data = cachedData.data_.decodeToString()
+                    val cachedData = db.get(url, "\"$testData\"".encodeToByteArray().contentHashCode().toLong())!!
+                    var data = cachedData.data.decodeToString()
 
                     //Convert it to an object
                     val cachedObj = kotlinJson.decodeFromString<HttpBinResponse>(data)
@@ -69,11 +75,13 @@ class EncryptedCacheTests {
                     data = data.replace(testData, "cacheModified")
                     db.delete(url, "\"$testData\"".encodeToByteArray().contentHashCode().toLong())
                     db.insert(
-                        cachedData.url,
-                        cachedData.bodyHash,
-                        cachedData.cachedAt,
-                        data.encodeToByteArray(),
-                        cachedData.iv
+                        CacheEntity(
+                            url = cachedData.url,
+                            bodyHash = cachedData.bodyHash,
+                            cachedAt = cachedData.cachedAt,
+                            data = data.encodeToByteArray(),
+                            iv = cachedData.iv
+                        )
                     )
 
                     //Now, we make the same network call again but make sure the data is fetched from the cache
@@ -83,7 +91,7 @@ class EncryptedCacheTests {
                             assertEquals("Did not get modified result from cache", resultFromCache.value.data, "\"cacheModified\"")
 
                             //Now, we wait 2 seconds
-                            delay(2000)
+                            realDelay(2000)
 
                             //And finally, make another request, but this time make sure the data is stale and ensure the cached data is not fetched
                             when (val result = client.post<HttpBinResponse, String>("post", testData, customCache = CacheEnabled(staleDataThreshold = 1.seconds))) {
@@ -92,11 +100,11 @@ class EncryptedCacheTests {
                                     assertEquals("Did not get original test data back", result.value.data, "\"$testData\"")
 
                                     //Wait for cache data to be written on another thread
-                                    delay(1000)
+                                    realDelay(1000)
 
                                     //Get the cached data
-                                    val cachedData = db.get(url, "\"$testData\"".encodeToByteArray().contentHashCode().toLong()).executeAsOne()
-                                    val data = cachedData.data_.decodeToString()
+                                    val cachedData = db.get(url, "\"$testData\"".encodeToByteArray().contentHashCode().toLong())!!
+                                    val data = cachedData.data.decodeToString()
 
                                     //Convert it to an object
                                     val cachedObj = kotlinJson.decodeFromString<HttpBinResponse>(data)
@@ -125,8 +133,8 @@ class EncryptedCacheTests {
 
     @Test
     fun makeSureDataWasCachedEncryptedVersion() {
-        runBlocking {
-            val db = DatabaseFactory.provideCacheDatabase()
+        runTest {
+            val db = OptionallyEncryptedCache.getDb()
             val testData = uuid4().toString()
 
             val client = HoodiesNetworkClient.Builder().apply {
@@ -141,11 +149,11 @@ class EncryptedCacheTests {
 
                     val url = "${ServerManager.testBaseUrl}/post"
                     //Wait for cache data to be written on another thread
-                    delay(1000)
+                    realDelay(1000)
 
                     //Get the cached data
-                    val cachedData = db.get(url, "\"$testData\"".encodeToByteArray().contentHashCode().toLong()).executeAsOne()
-                    var data = Cryptography.runAes(cachedData.data_, cachedData.iv!!, CipherMode.DECRYPT).decodeToString()
+                    val cachedData = db.get(url, "\"$testData\"".encodeToByteArray().contentHashCode().toLong())!!
+                    var data = Cryptography.runAes(cachedData.data, cachedData.iv!!, CipherMode.DECRYPT).decodeToString()
 
                     //Convert it to an object
                     val cachedObj = kotlinJson.decodeFromString<HttpBinResponse>(data)
@@ -157,11 +165,13 @@ class EncryptedCacheTests {
                     data = data.replace(testData, "cacheModified")
                     db.delete(url, "\"$testData\"".encodeToByteArray().contentHashCode().toLong())
                     db.insert(
-                        cachedData.url,
-                        cachedData.bodyHash,
-                        cachedData.cachedAt,
-                        Cryptography.runAes(data.encodeToByteArray(), cachedData.iv!!, CipherMode.ENCRYPT),
-                        cachedData.iv
+                        CacheEntity(
+                            url = cachedData.url,
+                            bodyHash = cachedData.bodyHash,
+                            cachedAt = cachedData.cachedAt,
+                            data = Cryptography.runAes(data.encodeToByteArray(), cachedData.iv!!, CipherMode.ENCRYPT),
+                            iv = cachedData.iv
+                        )
                     )
 
                     //Now, we make the same network call again but make sure the data is fetched from the cache
@@ -171,7 +181,7 @@ class EncryptedCacheTests {
                             assertEquals("Did not get modified result from cache", resultFromCache.value.data, "\"cacheModified\"")
 
                             //Now, we wait 2 seconds
-                            delay(2000)
+                            realDelay(2000)
 
                             //And finally, make another request, but this time make sure the data is stale and ensure the cached data is not fetched
                             when (val result = client.post<HttpBinResponse, String>("post", testData,
@@ -181,11 +191,11 @@ class EncryptedCacheTests {
                                     assertEquals("Did not get original test data back", result.value.data, "\"$testData\"")
 
                                     //Wait for cache data to be written on another thread
-                                    delay(1000)
+                                    realDelay(1000)
 
                                     //Get the cached data
-                                    val cachedData = db.get(url, "\"$testData\"".encodeToByteArray().contentHashCode().toLong()).executeAsOne()
-                                    val data = Cryptography.runAes(cachedData.data_, cachedData.iv!!, CipherMode.DECRYPT).decodeToString()
+                                    val cachedData = db.get(url, "\"$testData\"".encodeToByteArray().contentHashCode().toLong())!!
+                                    val data = Cryptography.runAes(cachedData.data, cachedData.iv!!, CipherMode.DECRYPT).decodeToString()
 
                                     //Convert it to an object
                                     val cachedObj = kotlinJson.decodeFromString<HttpBinResponse>(data)

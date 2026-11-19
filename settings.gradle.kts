@@ -31,5 +31,6 @@ dependencyResolutionManagement {
     }
 }
 
+include(":HoodiesNetworkKmmDemoAndroid")
 include(":HoodiesNetworkKmmDemo")
 include(":HoodiesNetworkKmm")

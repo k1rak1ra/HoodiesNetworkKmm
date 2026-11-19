@@ -1,6 +1,7 @@
 package net.k1ra.hoodies_network_kmm.config
 
 import kotlin.time.Duration
+import net.k1ra.sharedprefkmm.util.TestConfig
 import kotlin.time.Duration.Companion.seconds
 
 data class HttpClientConfig (
@@ -10,5 +11,9 @@ data class HttpClientConfig (
     companion object {
         //Forces use of in-memory DB for sqlite and encryption key storage in Android (Because we can't use a Context)
         var testMode = false
+            set(value) {
+                field = value
+                TestConfig.testMode = value
+            }
     }
 }
