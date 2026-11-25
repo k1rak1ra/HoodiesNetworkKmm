@@ -8,5 +8,5 @@ import com.eygraber.sqldelight.androidx.driver.opfs.opfsWorker
 internal actual fun createCookieDatabaseBuilder(): RoomDatabase.Builder<CookieDatabase> {
     return Room.databaseBuilder<CookieDatabase>("HoodiesNetworkCookies.db") {
         CookieDatabaseBuilder.initialize()
-    }.setDriver(WebWorkerSQLiteDriver(opfsWorker().worker))
+    }.setDriver(WebWorkerSQLiteDriver(opfsWorker().worker)).setJournalMode(RoomDatabase.JournalMode.TRUNCATE)
 }

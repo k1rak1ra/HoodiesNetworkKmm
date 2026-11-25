@@ -8,5 +8,5 @@ import com.eygraber.sqldelight.androidx.driver.opfs.opfsWorker
 internal actual fun createCacheDatabaseBuilder(): RoomDatabase.Builder<CacheDatabase> {
     return Room.databaseBuilder<CacheDatabase>("HoodiesNetworkCache.db") {
         CacheDatabaseBuilder.initialize()
-    }.setDriver(WebWorkerSQLiteDriver(opfsWorker().worker))
+    }.setDriver(WebWorkerSQLiteDriver(opfsWorker().worker)).setJournalMode(RoomDatabase.JournalMode.TRUNCATE)
 }
