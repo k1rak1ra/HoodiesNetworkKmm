@@ -20,7 +20,7 @@ sqlite = "2.8.0-alpha04"
 ksp = "2.3.14"
 opfs-driver = "0.5.0-alpha.11"
 uuid = "0.8.4"
-k1ra-sharedpref = "2.0.4"
+k1ra-sharedpref = "2.0.5"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
